@@ -16,7 +16,13 @@
     color: #222;
     font-size: 1em;
     line-height: 1.4;
-}
+  }
+
+  body {
+    font-family: "Courier New", Courier, monospace;
+    background-color: black;
+    color: white;
+  }
 
 /*
  * Remove text-shadow in selection highlight:
@@ -28,22 +34,22 @@
  * Customize the background color to match your design.
  */
 
-::selection {
-    background: #b3d4fc;
-    text-shadow: none;
+ ::selection {
+  background: #b3d4fc;
+  text-shadow: none;
 }
 
 /*
  * A better looking default horizontal rule
  */
 
-hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+ hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
 }
 
 /*
@@ -52,43 +58,43 @@ hr {
  * https://github.com/h5bp/html5-boilerplate/issues/440
  */
 
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-    vertical-align: middle;
+ audio,
+ canvas,
+ iframe,
+ img,
+ svg,
+ video {
+  vertical-align: middle;
 }
 
 /*
  * Remove default fieldset styles.
  */
 
-fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
+ fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /*
  * Allow only vertical resizing of textareas.
  */
 
-textarea {
-    resize: vertical;
+ textarea {
+  resize: vertical;
 }
 
 /* ==========================================================================
    Browser Upgrade Prompt
    ========================================================================== */
 
-.browserupgrade {
+   .browserupgrade {
     margin: 0.2em 0;
     background: #ccc;
     color: #000;
     padding: 0.2em 0;
-}
+  }
 
 
 
@@ -192,7 +198,7 @@ textarea {
   clear: both;
 }
 
- 
+
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
@@ -201,16 +207,16 @@ textarea {
 
    @media only screen and (min-width: 35em) {
     /* Style adjustments for viewports that meet the condition */
-}
+  }
 
-@media print,
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 1.25dppx),
-       (min-resolution: 120dpi) {
+  @media print,
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
     /* Style adjustments for high resolution devices */
-}
+  }
 
- 
+
 /* ==========================================================================
    Print styles.
    Inlined to avoid the additional HTTP request:
@@ -221,24 +227,24 @@ textarea {
     *,
     *:before,
     *:after {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster */
-        -webkit-box-shadow: none !important;
-        box-shadow: none !important;
-        text-shadow: none !important;
+      background: transparent !important;
+      color: #000 !important; /* Black prints faster */
+      -webkit-box-shadow: none !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
     }
 
     a,
     a:visited {
-        text-decoration: underline;
+      text-decoration: underline;
     }
 
     a[href]:after {
-        content: " (" attr(href) ")";
+      content: " (" attr(href) ")";
     }
 
     abbr[title]:after {
-        content: " (" attr(title) ")";
+      content: " (" attr(title) ")";
     }
 
     /*
@@ -246,18 +252,18 @@ textarea {
      * or use the `javascript:` pseudo protocol
      */
 
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
+     a[href^="#"]:after,
+     a[href^="javascript:"]:after {
+      content: "";
     }
 
     pre {
-        white-space: pre-wrap !important;
+      white-space: pre-wrap !important;
     }
     pre,
     blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
+      border: 1px solid #999;
+      page-break-inside: avoid;
     }
 
     /*
@@ -265,26 +271,106 @@ textarea {
      * http://css-discuss.incutio.com/wiki/Printing_Tables
      */
 
-    thead {
-        display: table-header-group;
+     thead {
+      display: table-header-group;
     }
 
     tr,
     img {
-        page-break-inside: avoid;
+      page-break-inside: avoid;
     }
 
     p,
     h2,
     h3 {
-        orphans: 3;
-        widows: 3;
+      orphans: 3;
+      widows: 3;
     }
 
     h2,
     h3 {
-        page-break-after: avoid;
+      page-break-after: avoid;
     }
-}
+  }
 
+  h1 {
+    font-size: 70px;
+    font-weight: bold;
+  }
 
+  a {
+    color: white;
+  }
+  /* unvisited link */
+  a:link {
+    text-decoration:underline;
+  }
+
+  /* visited link */
+  a:visited {
+    text-decoration:none;
+  }
+
+  /* mouse over link */
+  a:hover {
+    text-decoration:underline;
+  }
+
+  /* selected link */
+  a:active {
+    text-decoration:underline;
+    font-weight: bold;
+  }
+
+  .glitch {
+    position: relative;
+    padding: 30px;
+  }
+
+  .glitch::before, .glitch::after {
+    padding: 30px;
+    color: white;
+    content: "kyle barnes.";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: black;
+    overflow: hidden;
+    top: 0;
+  }
+  
+  .glitch::before {
+    left: 3px;
+    text-shadow: -2px 0 red;
+    animation-name: glitch-animation-1;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse-alternate;
+  }
+
+  .glitch::after {
+    left: -3px;
+    text-shadow: -2px 0 blue;
+    animation-name: glitch-animation-2;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse-alternate;
+  }
+  
+  @keyframes glitch-animation-1 {
+    $steps: 20;
+    @for $i from 0 through $steps;
+    #{percentage($i*(1/$steps))};
+    clip: rect(random(150)+px, 350px, random(150)+px, 30px);
+  }
+
+  @keyframes glitch-animation-2 {
+    $steps: 20;
+    @for $i from 0 through $steps;
+    #{percentage($i*(1/$steps))};
+    clip: rect(random(150)+px, 350px, random(150)+px, 30px);
+  }
