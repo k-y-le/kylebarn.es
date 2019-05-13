@@ -1,4 +1,4 @@
-var particleNumber = 2750;
+var particleNumber = 1000;
 var particleSize = between(1.5, 3.5);
 var outlineSize = between(0.008, 0.035);
 
@@ -24,6 +24,13 @@ c.width = w;
 c.height = h;
 //setting the width and height for canvas
 
+var originX = c.width / 2;
+var originY = c.height / 2;
+// updated on click
+
+var iteration = 1;
+// how many times has the user clicked?
+
 function between(min, max) {
   return Math.random() * (max - min) + min;
 }
@@ -40,8 +47,10 @@ for(i = 0; i < particleNumber; i++) {
 // adding 55 particles
 
 function createParticle() {
-  this.x = c.width / 2;
-  this.y = c.height / 2;
+  this.x = originX;
+  this.y = originY;
+
+  this.id = iteration;
 
   this.angle = between(3, 10);
   this.speed = c.width / 450;
@@ -49,6 +58,7 @@ function createParticle() {
   this.size = particleSize;
 
   this.nearMouse = false;
+  this.outlineSize = outlineSize;
 
   var y = '#e6c229';
   var w = '#e7ecef';
@@ -82,6 +92,26 @@ window.addEventListener("keypress", function(e) {
   window.location.reload(false);
 });
 
+window.addEventListener("click", function(e) {
+  var pos = getMousePos(e);
+
+  originX = pos.x;
+  originY = pos.y;
+
+  iteration++;
+
+  particleSize = between(1.5, 3.5);
+  outlineSize = between(0.008, 0.035);
+
+  for(i = 0; i < particleNumber; i++) {
+    setTimeout(function(){
+      particles.push(new createParticle);
+    }, i * 12);
+  }
+
+  draw();
+});
+
 function getMousePos(e) {
     var rect = c.getBoundingClientRect();
     return {
@@ -96,10 +126,6 @@ function draw(e) {
   ctx.fillStyle = 'rgba(0, 0, 0, 0.075)';
   ctx.fillRect(0, 0, c.width, c.height);
 
-  var pos = getMousePos(e);
-  var posx = pos.x;
-  var posy = pos.y;
-
   for(t = 0; t < particles.length; t++) {
     var p = particles[t];
 
@@ -107,16 +133,19 @@ function draw(e) {
     ctx.fillStyle = p.color;
     ctx.arc(p.x, p.y, p.size, Math.PI * 2, false);
     ctx.fill();
-
-    if (p.nearMouse === false) {
-      p.x += Math.cos((Math.PI * 1) + (p.angle) ) * p.speed;
-      p.y += Math.sin((Math.PI * 1) + (p.angle) ) * p.speed;
+    for (i = 1; i < iteration + 1; i++) {
+      if (p.id === i) {
+        if (p.nearMouse === false) {
+          p.x += Math.cos((Math.PI * 1) + (p.angle) ) * p.speed;
+          p.y += Math.sin((Math.PI * 1) + (p.angle) ) * p.speed;
+        }
+        else {
+          p.y += 100000;
+        }
+        // between .01 and .05
+        p.angle += p.outlineSize;
+      }
     }
-    else {
-      p.y += 100000;
-    }
-    // between .01 and .05
-    p.angle += outlineSize;
   }
 }
 
