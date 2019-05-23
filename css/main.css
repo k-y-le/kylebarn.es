@@ -295,7 +295,6 @@
 
 /* https://coolors.co/06aed5-086788-273043-dd1c1a-eadaa2 */
   h1 {
-    font-size: 70px;
     font-weight: bold;
     font-family: "Lato", sans-serif;
     color: black;
@@ -304,13 +303,17 @@
     -webkit-text-stroke-color: black;
   }
 
+  .titles {
+    font-size: 50px;
+    padding: 100px;
+  }
   #title1 {
-    transform: translate(-50%, 0%);
-    transition: all 1s ease-out;
+    transform: translate(-25%, 0%);
+    transition: all 1.5s ease-out;
   }
 
   #title1.parallax {
-    transform: translate(0%, 0%);
+    transform: translate(25%, 0%);
   }
 
   a {
