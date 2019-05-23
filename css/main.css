@@ -20,8 +20,8 @@
 
   body {
     font-family: "Merriweather", serif;
-    background-color: black;
-    color: white;
+    background-color: #eadaa2;
+    color: black;
   }
 
 /*
@@ -293,18 +293,28 @@
     }
   }
 
+/* https://coolors.co/06aed5-086788-273043-dd1c1a-eadaa2 */
   h1 {
     font-size: 70px;
     font-weight: bold;
     font-family: "Lato", sans-serif;
-    color: white;
-    -webkit-text-fill-color: black; /* Will override color (regardless of order) */
+    color: black;
+    -webkit-text-fill-color: #eadaa2; /* Will override color (regardless of order) */
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: white;
+    -webkit-text-stroke-color: black;
+  }
+
+  #title1 {
+    transform: translate(-50%, 0%);
+    transition: all 1s ease-out;
+  }
+
+  #title1.parallax {
+    transform: translate(0%, 0%);
   }
 
   a {
-    color: white;
+    color: black;
   }
   /* unvisited link */
   a:link {
