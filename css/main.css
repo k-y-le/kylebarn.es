@@ -74,3 +74,11 @@ a:hover {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+@media only screen and (max-width: 768px) {
+  .maintext {
+    font-size: 3vw;
+  }
+  .mobilehidden {
+    display: none;
+  }
+}
