@@ -1,2 +1,2 @@
 # kylebarn.es
-a personal portfolio website -- having fun with design
+a personal portfolio website with some (some!) information about me
