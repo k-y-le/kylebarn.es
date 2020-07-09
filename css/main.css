@@ -30,9 +30,13 @@ a:hover {
   font-size: 5vw;
   line-height: 150px;
 }
-.maintext {
-  font-size: 1.5vw;
-  font-family: 'Merriweather', serif;
+.medtext {
+  font-size: 4vw;
+  line-height: 150px;
+}
+.iconmobile {
+  font-size: 4vh;
+  padding: 5px;
 }
 .customimage1 {
   width: 100%;
@@ -63,22 +67,30 @@ a:hover {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.listxt {
+  font-size: 200%;
+}
 .imagediv {
   padding: 0px;
   position: relative;
 }
-.ico {
-  position: relative;
-  float: left;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 @media only screen and (max-width: 768px) {
-  .maintext {
-    font-size: 3vw;
-  }
   .mobilehidden {
     display: none;
+  }
+  .listxt {
+    font-size: 100%;
+  }
+  .ico {
+    text-align: center;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .ico {
+    position: relative;
+    float: left;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
