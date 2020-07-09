@@ -17,6 +17,9 @@ a:hover {
   font-size: 2.5em;
   padding-left: 1em;
 }
+.unithalf {
+  height: 75px;
+}
 .unit {
   height: 150px;
 }
@@ -25,6 +28,9 @@ a:hover {
 }
 .unit3 {
   height: 450px;
+}
+.unitbig {
+  height: 525px;
 }
 .bigtext {
   font-size: 5vw;
@@ -61,11 +67,8 @@ a:hover {
   color: white;
 }
 .linktext {
-  position: absolute;
-  white-space: nowrap;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  line-height: 75px;
+  margin: auto;
 }
 .listxt {
   font-size: 200%;
