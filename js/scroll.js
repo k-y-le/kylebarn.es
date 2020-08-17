@@ -226,7 +226,7 @@ var loadMore = function() {
       item.innerText = adPhrases[Math.round(Math.random()*(adPhrases.length - 1))];
     }
     var scaleAmt = 1 + 0.03*nextItem;
-    item.style.transform = "scaleY(" + scaleAmt +")";
+    item.style.transform = item.style.transform + "scaleY(" + scaleAmt +")";
     listElm.appendChild(item);
     nextItem++;
   }
