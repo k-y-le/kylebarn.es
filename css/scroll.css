@@ -1,0 +1,98 @@
+* {
+	 cursor: none;
+}
+ html, body {
+	 margin: unset;
+	 width: 100%;
+	 height: 100%;
+	 overflow: hidden;
+	 background-color: black;
+}
+ #floor:before {
+	 content: "";
+	 position: absolute;
+	 z-index: 999;
+	 top: 0;
+	 left: 0;
+	 right: 0;
+	 bottom: 0;
+	 background: radial-gradient(farthest-side, #fff 95%, transparent 100%) calc(var(--x) - .75em) calc(var(--y) - .75em)/10em 10em fixed no-repeat;
+	 mix-blend-mode: difference;
+}
+ #floor {
+	 width: 100vw;
+	 height: 100vh;
+	 display: flex;
+	 flex-flow: wrap;
+	 position: relative;
+	 z-index: 0;
+	 color: #fff;
+}
+ #floor .floor-square {
+	 width: 16.66%;
+	 width: calc(100% / 6);
+	 background-color: #fff;
+	 box-sizing: border-box;
+	 border: solid 2px black;
+	 transition: background-color 1s ease;
+}
+ @media only screen and (max-width: 600px) {
+	 #floor .floor-square {
+		 width: 16.66%;
+		 width: calc(100% / 3);
+	}
+}
+ #floor .floor-square:before {
+	 content: "";
+	 display: block;
+	 padding-top: 100%;
+}
+ #infinite-list {
+	/* We need to limit the height and show a scrollbar */
+	 height: 100%;
+	 width: 100%;
+	 overflow: auto;
+	 margin: 0px;
+	 position: fixed;
+	 top: 0;
+	 left: 0;
+	 padding: 0;
+}
+/* Optional eye candy below: */
+ li {
+	 padding-top: 350px;
+	 list-style-type: none;
+	 font-family: 'Rubik', sans-serif;
+	 font-size: 3rem;
+	 text-align: center;
+}
+/* The Modal (background) */
+ .modal {
+	 display: block;
+	 position: fixed;
+	/* Stay in place */
+	 z-index: 1;
+	/* Sit on top */
+	 left: 0;
+	 top: 0;
+	 width: 100%;
+	/* Full width */
+	 height: 100%;
+	/* Full height */
+	 overflow: auto;
+	/* Enable scroll if needed */
+	 background-color: rgba(0, 0, 0, 0.8);
+	/* Black w/ opacity */
+}
+/* Modal Content/Box */
+ .modal-content {
+	 background-color: rgba(0, 0, 0, 0);
+	 color: white;
+	 text-align: center;
+	 margin: 15% auto;
+	/* 15% from the top and centered */
+	 padding: 20px;
+	 width: 80%;
+	/* Could be more or less, depending on screen size */
+	 font-family: "Courier New", Courier, monospace;
+}
