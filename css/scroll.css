@@ -51,7 +51,8 @@
 	/* We need to limit the height and show a scrollbar */
 	 height: 100%;
 	 width: 100%;
-	 overflow: auto;
+	 overflow-y: auto;
+	 overflow-x: hidden;
 	 margin: 0px;
 	 position: fixed;
 	 top: 0;
