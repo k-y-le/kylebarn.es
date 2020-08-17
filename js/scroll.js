@@ -5,7 +5,7 @@ const adPhrases =
       "Hurry - only a limited number of watches available!",
       "A world first recycled reverse weave range created with 45% recycled materials. Get your fix now.",
       "We've got cakes in a range of sizes and flavours to fancy all tastebuds",
-      "Try our cabbage+chicken fried rice and pork lard+egg friend rice, trust me, you'll like it!",
+      "Try our cabbage+chicken fried rice and pork lard+egg fried rice, trust me, you'll like it!",
       "Tap to shop our bestselling sweatshirt now!",
       "DM us to organize your free consultation",
       "Effortless precision for your style",
@@ -33,7 +33,29 @@ const adPhrases =
       "The Perfect Look For Browsing The Shops At Your Fave Beach Town",
       "When it comes to Strawberries, we’re as real as it gets. Tag your friends who keep it real!",
       "The spotlight should be on you—NOT your acne",
-      "We’re already almost sold out on these new gold bracelets!!"];
+      "We’re already almost sold out on these new gold bracelets!!",
+      "And of course, Oporto's legendary Original Chilli Sauce",
+      "30 Seasons, all ad-free, with unlimited downloads? Woo-Hoo!",
+      "ANZ with Google Pay makes paying quick and easy when your card feels sooooo far away.",
+      "An intensely woody aromatic fragrance that opens with freshness and then lingers with a generous and powerful accord, illuminated by New Caledonian sandalwood.",
+      "Getting your creative project under control is well within your grasp",
+      "Get dressed in a snap with easy-to-wear looks that look good from head-to-toe",
+      "Experience the creativity, humor, and freedom of The Sims 4 today!",
+      "Save up to 40% on your next flight",
+      "Our men's chino's work hard, with lycra and twill construction, they are built to last",
+      "Yummy new McVitie's Digestive flavours? Yeah, we did that.",
+      "We're the first bank in Australia to switch to 100% renewable electricity",
+      "Platypus Shoes. Play. Life. Loud. Shop online or in-store 24/7",
+      "Pre-order now to take advantage of our launch offer",
+      "Promotion Now! Up To 47% OFF Fun Graffiti Shirts!",
+      "New catalogue out now: Smashing Prices",
+      "Support quality journalism from $3.50 per week",
+      "Cool gadgets up to 80% off retail",
+      "Join For FREE & Start Shopping - Buy 1 Get 1 Free",
+      "Get 2 Styles For Only $39.95 Free Shipping!",
+      "Healthy and low-calorie meals delivered to your door in 15 minutes!",
+      "101 Night No-Risk Trial and Free Delivery",
+      "Just enter code SAVE2020 at checkout"];
 // ACTIVIST :: phrases
 const actPhrases =
       ["Nobody should have to be ashamed of who they are. Let us enjoy our food in peace.",
@@ -125,7 +147,14 @@ const actPhrases =
       "The state only gives us the illusion of choice. The illusion of choice is fascism",
       "Don't call COVID-19 the 'Chinese Virus' or 'Kung Flu'",
       "Don't ask me where I'm 'really' from",
-      "Why you should care about Belarus","No war in Yemen","Black life is traumatizing. Black death is traumatizing","Justice for Ahmaud Arbery","10 simple ways white people can step up to fight everyday racism","Take action now","Poverty should not be a crime","We have been conditioned into complacency, performance, and meaningless guilt","Why you shouldn't have posted a black square","Advocacy means going beyond having conversations with people who already agree with you","87 ways you can help", "3 texts to send right now", "A list of Black queer and trans organizations to support"];
+      "Why you should care about Belarus","No war in Yemen","Black life is traumatizing. Black death is traumatizing","Justice for Ahmaud Arbery","10 simple ways white people can step up to fight everyday racism","Take action now","Poverty should not be a crime","We have been conditioned into complacency, performance, and meaningless guilt","Why you shouldn't have posted a black square","Advocacy means going beyond having conversations with people who already agree with you","87 ways you can help", "3 texts to send right now", "A list of Black queer and trans organizations to support",
+      "By these standards, most of the tens of thousands of people in solitary in the United States are being tortured.",
+      "If we don't act fast, plastic pollution flowing into the ocean will triple in 20 years",
+      "Stop bringing nonresident students to Hawai'i during a pandemic",
+      "Afro-descendant and Indigenous people bear the brunt of the country's violence",
+      "Peace is not possible without listening to Black communities",
+      "As many protestors, organizers, and leaders know - this could have been any one of us.",
+      "If your vote didn't matter so much, they wouldn't be trying so hard to keep you from voting"];
 
 // create div childs for the floor
 for(x=0; x<100;x++) {
@@ -174,10 +203,11 @@ var loadMore = function() {
   for (var i = 0; i < 24; i++) {
     var item = document.createElement('li');
     var newPhrase = randomPhrase();
-    if (newPhrase === prevPhrase) {
+    while (newPhrase === prevPhrase) {
       newPhrase = randomPhrase();
     }
     item.innerText = newPhrase;
+    prevPhrase = newPhrase;
     if (i % 4 === 0) {
       item.style.padding = "350px 10px 0px 100px";
       item.style.textAlign = "right";
