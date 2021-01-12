@@ -54,6 +54,13 @@ a:hover {
   height: 448px;
   object-fit: cover;
 }
+.hide {
+  display: none;
+  margin: auto;
+}
+.imagediv:hover + .hide {
+  display: block;
+}
 .pagelink:hover img{
   display: block;
 }
