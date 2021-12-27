@@ -13,6 +13,9 @@ function setup()
   crndPalette = int(random(0, coolors.length));
   crnd = int(random(0, coolors[crndPalette].length));
   crndPrev = int(random(0, coolors[crndPalette].length));
+  while (crndPrev === crnd) {
+    crnd = int(random(0, coolors[crndPalette].length));
+  }
   numtri = int(random(3, 21));
   t1 = 0;
   t2 = 0;
@@ -35,7 +38,7 @@ function setup()
 
 function draw(){
   clear();
-  background(coolors[crndPalette][crnd]);
+  background(coolors[crndPalette][crndPrev]);
 
   // draw new ones
   if(frameCount%120==0){
@@ -60,8 +63,10 @@ function draw(){
       abs(sin(t4+i*rnd4))*h
     );
     // fill(coolors[int((i*coolors.length) / numtri)]);
-    fill(coolors[crndPalette][crndPrev])
-    stroke(coolors[crndPalette][crnd]);
+    var fillcol = color(coolors[crndPalette][crnd]);
+    fillcol.setAlpha(200);
+    fill(fillcol);
+    stroke(coolors[crndPalette][crndPrev]);
   }
   t1 += dt;
   t2 += dt;
