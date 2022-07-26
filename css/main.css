@@ -1,6 +1,8 @@
 body {
   font-family: 'Lato', sans-serif;
-  padding-top: 71px;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
 }
 a {
   color: black;
@@ -8,99 +10,48 @@ a {
 a:hover {
   color: black;
 }
-.navbar {
-  background-color: white;
-  padding-top: 0px;
-  padding-bottom: 0px;
+
+.more-info {
+  width: 40%;
+  height: 30%;
 }
-.navbar-brand {
-  font-size: 2.5em;
-  padding-left: 1em;
+
+.info-img {
+  width: 44%;
+  height: 24.75%;
 }
-.unit {
-  height: 150px;
+
+.info-box {
+  z-index: 3;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  display:none;
+  pointer-events: none;
 }
-.unit2 {
-  height: 300px;
+
+.info-box-img {
+  width: 90%;
+  height: 90%;
 }
-.unit3 {
-  height: 450px;
+
+.home-front {
+  z-index: 2;
+  pointer-events: none;
 }
-.bigtext {
-  font-size: 5vw;
-  line-height: 150px;
+
+.home-img-25 {
+  position: fixed;
+  width: 25%;
 }
-.medtext {
-  font-size: 4vw;
-  line-height: 150px;
+
+.home-img-20 {
+  position: fixed;
+  width: 20%;
 }
-.smtext {
-  font-size: 1.6vw;
-  /* line-height: 150px; */
+
+.home-img-15 {
+  position: fixed;
+  width: 15%;
 }
-.iconmobile {
-  font-size: 4vh;
-  padding: 5px;
-}
-.customimage1 {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-}
-.customimage2 {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  display: none;
-}
-.customimage3 {
-  width: 100%;
-  height: 448px;
-  object-fit: cover;
-}
-.hide {
-  display: none;
-  margin: auto;
-}
-.imagediv:hover + .hide {
-  display: block;
-}
-.linktext {
-  position: absolute;
-  white-space: nowrap;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.listxt {
-  font-size: 200%;
-}
-.imagediv {
-  padding: 0px;
-  position: relative;
-}
-@media only screen and (max-width: 768px) {
-  .mobilehidden {
-    display: none;
-  }
-  .listxt {
-    font-size: 100%;
-  }
-  .smtext {
-    font-size: 2.5vw;
-    /* line-height: 150px; */
-  }
-  .ptext {
-    font-size: .6rem;
-    padding: 5px;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .ico {
-    position: relative;
-    float: left;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
+
