@@ -1,19 +1,19 @@
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Courier New', monospace;
   width: 100vw;
   height: 100vh;
   margin: 0;
 }
 a {
-  color: black;
+  color: white;
 }
 a:hover {
-  color: black;
+  color: white;
 }
 
 .more-info {
   width: 40%;
-  height: 30%;
+  height: auto;
 }
 
 .info-img {
@@ -27,12 +27,15 @@ a:hover {
   background-color: rgba(0, 0, 0, 0.4);
   color: white;
   display:none;
-  pointer-events: none;
+  /* pointer-events: none; */
+  padding: 2rem;
 }
 
 .info-box-img {
-  width: 90%;
-  height: 90%;
+  max-width: 90%;
+  max-height: 100%;
+  display: block;
+  margin: auto;
 }
 
 .home-front {
@@ -53,5 +56,11 @@ a:hover {
 .home-img-15 {
   position: fixed;
   width: 15%;
+}
+
+@media only screen and (max-width: 760px) {
+  #home-text {
+    width: 35%;
+  }
 }
 
