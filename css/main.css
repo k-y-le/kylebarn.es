@@ -62,5 +62,8 @@ a:hover {
   #home-text {
     width: 35%;
   }
+  .info-box {
+    font-size: x-small;
+  }
 }
 
