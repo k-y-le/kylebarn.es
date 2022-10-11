@@ -58,6 +58,10 @@ a:hover {
   width: 15%;
 }
 
+.home-click {
+  cursor: all-scroll;
+}
+
 @media only screen and (max-width: 760px) {
   #home-text {
     width: 35%;

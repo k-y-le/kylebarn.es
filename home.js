@@ -1,4 +1,7 @@
 
+  $( function() {
+    $(".home-click").draggable();
+  } );
 $(".home-click").hover(function(e){
     e.stopPropagation();
     $("#home-text").attr("src", "img/text_" + this.id + ".png"); 
