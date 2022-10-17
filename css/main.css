@@ -69,5 +69,43 @@ a:hover {
   .info-box {
     font-size: x-small;
   }
+  #performance-textbox {
+    font-size: small;
+  }
+  #lamp {
+    width: 40%;
+    right: 2% !important;
+  }
 }
 
+#performance-list {
+  position: absolute;
+  left: 0%;
+  font-size: 2em;
+  overflow: scroll;
+}
+#performance-list a {
+  color: gray;
+}
+#performance-list a:hover {
+  color: black;
+  cursor: pointer;
+}
+#performance-textbox {
+  position: fixed;
+  width: 40%;
+  right: 14%;
+  bottom: 24%;
+  border-style: solid;
+  border-width: 3px;
+  padding: 1em;
+}
+#performance-textbox div {
+  display: none;
+}
+
+#lamp {
+  z-index: 3;
+  top: 0%;
+  right: 12%;
+}
