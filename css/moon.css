@@ -42,7 +42,7 @@ body {
 
 @media only screen and (max-width: 760px) {
 .main-text {
-    font-size: 8.8vh;
+    font-size: 7vh;
 }
 .sub-text {
     font-size: 3vh;
