@@ -11,7 +11,6 @@ body {
     background-color: #3981B6;
   }
 /* MOON PARTY PAGE STUFF HERE */
-/* POLISH FLORAL FOLK ART COLORS: #FAC526 (yellow), #3981B6 (blue), #FA9A44 (orange), #2F9571 (green), #F6394D (red)  */
 .main-text {
     font-size: 13vh;
     text-decoration: underline;
@@ -27,13 +26,13 @@ body {
     margin-left: 10px;
 }
 .floral-gif {
-    /* The image used */
+    position: fixed;
+
     background-image: url("http://kylebarn.es/img/floral.gif");
   
-    /* Full height */
     height: 100%; 
+    width: 100%;
   
-    /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
