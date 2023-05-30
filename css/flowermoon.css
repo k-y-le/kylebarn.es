@@ -1,0 +1,51 @@
+html {
+    width: 100vw;
+    height: 100vh;
+}
+body {
+    font-family: 'Instrument Serif', serif;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    color: white;
+    background-color: #3981B6;
+  }
+/* MOON PARTY PAGE STUFF HERE */
+/* POLISH FLORAL FOLK ART COLORS: #FAC526 (yellow), #3981B6 (blue), #FA9A44 (orange), #2F9571 (green), #F6394D (red)  */
+.main-text {
+    font-size: 13vh;
+    text-decoration: underline;
+  }
+.main-text:hover {
+    color: #DCDCDC;
+    cursor: pointer;
+    font-style: italic;
+}
+.sub-text {
+    font-size: 4vh;
+    display: none;
+    margin-left: 10px;
+}
+.floral-gif {
+    /* The image used */
+    background-image: url("img/floral.gif");
+  
+    /* Full height */
+    height: 100%; 
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    pointer-events: none;
+  }
+
+@media only screen and (max-width: 760px) {
+.main-text {
+    font-size: 8.8vh;
+}
+.sub-text {
+    font-size: 3vh;
+}
+}
