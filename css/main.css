@@ -20,14 +20,11 @@ a:hover {
 .seminar-info {
   font-family: 'Space Mono', monospace;
 }
-@media only screen and (max-width: 768px) {
-  .seminar-mobile-h60 {
-    height: 60vh !important;
-    border-bottom: 1px solid black;
-  }
-  .seminar-mobile-h40 {
-    height: 40vh !important;
-  }
+
+.seminar-centered {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 .more-info {
