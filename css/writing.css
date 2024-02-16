@@ -1,0 +1,89 @@
+body {
+    font-family: 'Space', monospace;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-color: #fefae0;
+  }
+
+  a {
+    color: #1c1c1c;
+  }
+  a:hover {
+    color: #000000;
+  }
+  
+  #bg {
+    position: fixed;
+    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    pointer-events: none;
+    opacity: 1;
+    z-index: -1;
+    filter: brightness(90%);
+  }
+
+  .top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1em 0.5em;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    min-height: 80px;
+    padding: 1em 0.5em;
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .typed-out{
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 0.4s steps(8, end) forwards;
+    font-size: 1.6rem;
+    width: 0;
+  }
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  #map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: calc(200vh - 200px);
+    height: 200%;
+}
+#map .map-item {
+    position: absolute;
+    display: inline;
+}
+#map .map-item span[symbol] {
+    font-size: 1.5rem;
+}
+#map .map-item span[area] {
+    font-size: 0.6rem;
+    opacity: 0.5;
+}
