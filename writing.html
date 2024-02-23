@@ -24,14 +24,30 @@
 
 </head>
 <body>
-    <div id="dark-background">hello</div>
+    <div id="dark-background"></div>
+    <div id="dark-background-mobile" class="mobile-none"></div>
+    <div id="title-info-mobile" class="mobile-block">
+        <div id="title-mobile"></div>
+        <p id="title-description">diy newsletter straight from me to you, archived on this page. i intend for this newsletter to act as a creative method by which i can understand and share my life. if you would like to receive updates, <a class="signup-link"><u>sign up here.</u></a></p>
+        <div class="letter-row-mobile" data-date="2_15_24">
+            <h1 class="letter-title" id="spotlight-title">
+                most recent writing date
+            </h1>
+            <h5 class="letter-date" id="spotlight-date">
+                Feb 23, 2024
+            </h5>
+            <h5 class="letter-more">
+                ≡
+            </h5>
+        </div>
+    </div>
 
     <div id="container">
       <div id="left">
-        <div id="title"></div>
-        <p>diy newsletter straight from me to you, archived on this page. i intend for this newsletter to act as a creative method by which i can understand and share my life. if you would like to receive updates, <a class="signup-link"><u>sign up here.</u></a></p>
+        <div id="title" class="mobile-none"></div>
+        <p class="mobile-none">diy newsletter straight from me to you, archived on this page. i intend for this newsletter to act as a creative method by which i can understand and share my life. if you would like to receive updates, <a class="signup-link"><u>sign up here.</u></a></p>
         
-        <div id="letters-index">
+        <div id="letters-index" class="mobile-none">
             <div class="letter-row" data-date="2_15_24">
                 <h1 class="letter-title">
                     being soooo annoying (happy)
@@ -290,15 +306,17 @@
                     Feb 20, 2023
                 </h5>
             </div>
+
+            <p id="attribution">site adapted from <a href="https://tdingsun.github.io/worlding/">chimeric worlding by tiger dingsun</a> - thank you, tiger!</p>
+
         </div>
 
-        <br>
-        <p>site adapted from <a href="https://tdingsun.github.io/worlding/">chimeric worlding by tiger dingsun</a> - thank you, tiger!</p>
-        
+        <br>        
       </div>
-      <div id="right"></div>
+      <div id="right">
+      </div>
     </div>
-    <div id="handle"></div>
+    <div id="handle" class="mobile-none"></div>
     <div id="signup-modal">
         <h3 style="margin: 1em 1em 2em 1em;">subscribe to this newsletter by entering your email in the box below. you'll be automatically subscribed, and can unsubscribe at any time by replying to one of the emails i send :)</h3>
         <form action="https://script.google.com/macros/s/AKfycbx79hgxQDPrB6zPc3ZHwI3XGTN6HuYQFed3zGt7qJWfB0cmiN4UuLqIwOCb5VDnrrfnVg/exec" method="POST" id="signup-form">
@@ -306,6 +324,10 @@
             <input type="submit" value="Subscribe">
           </form>
     </div>
+    <div id="signup-fab" class="signup-link">
+        +
+    </div>
+
 </body>
 <script src="js/writing.js"></script>
 </body>

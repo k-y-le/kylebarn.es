@@ -170,6 +170,11 @@
     transition: 0.25s;
   }
 
+  #attribution {
+    border-top: 2px solid;
+    padding: 10px;
+  }
+
   #signup-modal {
     display: none;
     position: fixed;
@@ -217,6 +222,27 @@
   text-align: center;
 }
 
+#signup-fab {
+  position: fixed;
+  z-index: 3;
+  right: 20px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  background-color: #1d3557;
+  color: #fefae0;
+  font-size: 2em;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+}
+
+#signup-fab:hover {
+  background-color: #174c96;
+  cursor: pointer;
+}
+
 #dark-background {
   display: none;
   position: fixed;
@@ -230,4 +256,92 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.mobile-block {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .mobile-none {
+    display: none;
+  }
+  .mobile-block {
+    display: block;
+  }
+  #right {
+    height: 70vh;
+    width: 100vw;
+    position: fixed;
+    bottom: 0;
+    border-top: 2px solid;
+  }
+  #right img {
+    width: 75vw !important;
+  }
+  #left {
+    border: none;
+  }
+  #letters-index {
+    height: 70vh;
+    width: 100vw;
+    background-color: #fefae0;
+    position: fixed;
+    top: 0;
+    border-bottom: 2px solid;
+    overflow: scroll;
+    z-index: 3;
+  }
+  .letter-row-mobile {
+    display: flex;
+    border-top: solid 2px;
+    background-color: #1d3557;
+    color: #fefae0;
+  }
+  #title-info-mobile {
+    position: fixed;
+    /* height: 30vh; */
+    top: 0;
+    overflow: scroll;
+    border-bottom: 2px solid;
+  }
+  #title-mobile {
+    padding: 10px;
+    font-size: 3rem;
+    line-height: 1em;
+    letter-spacing: -4px;  
+  }
+  #title-description {
+    font-size: .8rem;
+  }
+  .letter-title {
+    font-size: 1rem;
+    flex: 60%;
+  }
+  .letter-date {
+    flex: 20%;
+  }
+  .letter-more {
+    flex: 20%;
+    font-size: 2.5rem;
+    margin: auto;
+    text-align: center;
+  }
+  .letter-more:hover {
+    cursor: pointer;
+  }
+  #signup-modal {
+    left: 10vw;
+    top: 25vh;
+    width: 80vw;
+    height: 50vh;
+  }
+  #dark-background-mobile {
+    position: fixed;
+    z-index: 2;
+    width: 100vw;
+    height: 30vh;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+  }
 }
