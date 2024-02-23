@@ -18,6 +18,7 @@
   
   a:hover {
     color: #174c96;
+    cursor: pointer;
   }
   
   hr {
@@ -69,6 +70,10 @@
     color: #fefae0;
     cursor: pointer;
   }
+  .letter-row:active {
+    background-color: #1d3557;
+    color: #fefae0;
+  }
 
   .letter-date {
     flex: 20%;
@@ -77,6 +82,11 @@
   .letter-row {
     display: flex;
     border-top: solid 2px;
+  }
+
+  .active-letter {
+    background-color: #1d3557;
+    color: #fefae0;
   }
   
   .caption{
@@ -159,3 +169,65 @@
   
     transition: 0.25s;
   }
+
+  #signup-modal {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    left: 30vw;
+    top: 30vh;
+    width: 40vw;
+    height: 40vh;
+    overflow: auto;
+    background-color: #fefae0;
+    border: 2px solid #1d3557;
+    padding: 2.5em 0;
+  }
+
+#signup-modal input[type="email"] {
+  border-radius: 30px;
+  background-color: inherit;
+  border: 2px solid #1d3557;
+  height: 2em;
+  padding-left: 10px;
+  font-size: 1.2em;
+  font-family: 'Space Mono', monospace;
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+#signup-modal input[type="submit"] {
+  border-radius: 30px;
+  background-color: #1d3557;
+  border: none;
+  color: #fefae0;
+  height: 2em;
+  padding: 0 1em;
+  font-size: 1em;
+  font-family: 'Space Mono', monospace;
+  margin-top: 10px;
+}
+
+#signup-modal input[type="submit"]:hover {
+  background-color:#174c96;
+  cursor: pointer;
+}
+
+#signup-form {
+  text-align: center;
+}
+
+#dark-background {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+}
+
+#right img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

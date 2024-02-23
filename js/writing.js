@@ -28,6 +28,7 @@ function displayText(){
 
     // get the most recent writing - the first letter-title element in the html
     let date = $(".letter-row").first().attr("data-date");
+    $(".letter-row").first().addClass("active-letter");
     
     $.ajax({
         url: `writing/${date}.md`,
@@ -41,32 +42,28 @@ function displayText(){
 
 // for each element of class letter-title, make it so that on click it loads the writing markdown file that is included in the data-date attribute
 $(".letter-row").click(function(){
-    // Find the parent element and change its background to black and text color to white
-    $(this).css({
-        "background-color": "#1d3557",
-        "color": "#fefae0"
-    });
-    // Find all other parent elements and change their background to white and text color to black
-    $(this).siblings().css({
-        "background-color": "#fefae0",
-        "color": "#1d3557"
-    });
+    
+    // change parent element coloring to be highlighted
+    $(this).addClass("active-letter");
+    // Remove the class from all sibling elements
+    $(this).siblings().removeClass("active-letter");
+
     // still allow hovering of each other element
 
     // Add hover effect to siblings
-    $(this).siblings().hover(function() {
-        $(this).css({
-            "background-color": "#1d3557",
-            "color": "#fefae0",
-            "cursor": "pointer"
-        });
-    }, function() {
-        $(this).css({
-            "background-color": "#fefae0",
-            "color": "#1d3557",
-            "cursor": "default"
-        });
-    });
+    // $(this).siblings().hover(function() {
+    //     $(this).css({
+    //         "background-color": "#1d3557",
+    //         "color": "#fefae0",
+    //         "cursor": "pointer"
+    //     });
+    // }, function() {
+    //     $(this).css({
+    //         "background-color": "#fefae0",
+    //         "color": "#1d3557",
+    //         "cursor": "default"
+    //     });
+    // });
 
     let date = $(this).attr("data-date");
     $.ajax({
@@ -77,4 +74,39 @@ $(".letter-row").click(function(){
             $(`#right`).html(html);
         }
     });
+    });
+
+    $('#signup-form').submit(function(event) {
+        event.preventDefault();
+        var form = $(this);
+        var formData = new FormData(form[0]);
+        $.ajax({
+            url: form.attr('action'),
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                alert('you have been subscribed :) i promise not to spam u');
+                form[0].reset(); // Reset the form
+            },
+        error: function(error) {
+            console.error('Error:', error);
+        }
+    });
 });
+
+$(".signup-link").click(function() {
+    event.stopPropagation();
+    $("#signup-modal").css("display", "block");
+    $("#dark-background").css("display", "block");
+});
+
+$(document).click(function(event) {
+    // Check if the modal is open and the click is outside of the modal
+    if ($("#signup-modal").css("display") !== "none" && !$(event.target).closest("#signup-modal").length) {
+        $("#signup-modal").css("display", "none");
+        $("#dark-background").css("display", "none");}
+});
+ 
+
