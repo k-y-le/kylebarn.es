@@ -304,6 +304,7 @@
     top: 0;
     overflow: scroll;
     border-bottom: 2px solid;
+    z-index: 3;
   }
   #title-mobile {
     padding: 10px;
