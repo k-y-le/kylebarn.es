@@ -275,6 +275,7 @@
     position: fixed;
     bottom: 0;
     border-top: 2px solid;
+    font-size: 0.9rem;
   }
   #right img {
     width: 75vw !important;
@@ -294,7 +295,6 @@
   }
   .letter-row-mobile {
     display: flex;
-    border-top: solid 2px;
     background-color: #1d3557;
     color: #fefae0;
   }
@@ -307,12 +307,12 @@
   }
   #title-mobile {
     padding: 10px;
-    font-size: 3rem;
+    font-size: 1.5rem;
     line-height: 1em;
-    letter-spacing: -4px;  
+    letter-spacing: -2px;  
   }
   #title-description {
-    font-size: .8rem;
+    font-size: .65rem;
   }
   .letter-title {
     font-size: 1rem;
