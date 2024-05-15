@@ -344,4 +344,12 @@
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
   }
+  #signup-modal {
+    padding: 0;
+    height: 70vh;
+    top: 15vh;
+  }
+  #signup-modal input[type="email"] {
+    font-size: 1em;
+  }
 }
