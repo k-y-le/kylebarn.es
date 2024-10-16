@@ -13,6 +13,43 @@ $("document").ready(function(){
         var titleInfoMobileHeight = $("#title-info-mobile").outerHeight();
         $("#right").css("height", `calc(100vh - ${titleInfoMobileHeight}px)`);
     }
+
+    // Function to get query parameters
+    function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName;
+            
+        for (var i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+        return false;
+    }
+
+    // Get the 'date' query parameter from the URL
+    var newsletterDate = getUrlParameter('date');
+
+    if (newsletterDate) {
+        // Find the div with the matching data-date attribute
+        var $newsletterDiv = $('.letter-row[data-date="' + newsletterDate + '"]');
+        
+        if ($newsletterDiv.length) {
+            // Simulate loading the corresponding newsletter markdown
+            loadSpecificNewsletter(newsletterDate);
+        }
+    }
+
+    // Click event to update the URL and load the newsletter
+    $('.letter-row').on('click', function () {
+        var date = $(this).data('date');
+        // Update the URL to include the date parameter
+        history.pushState(null, null, '?date=' + date);
+        loadNewsletter(date);
+    });
 });
 
 
@@ -53,31 +90,49 @@ function displayText(){
     });
 }
 
+function loadSpecificNewsletter(date) {
+    let $element = $(`.letter-row[data-date="${date}"]`);
+    if ($element.length) {
+        loadNewsletterContent($element);
+    } else {
+        console.error("Newsletter not found for date:", date);
+    }
+}
+
 // for each element of class letter-title, make it so that on click it loads the writing markdown file that is included in the data-date attribute
-$(".letter-row").click(function(){
-
+function loadNewsletterContent(element) {
     // close mobile letters darkened background
-    $("#dark-background-mobile").addClass("mobile-none");    
+    $("#dark-background-mobile").addClass("mobile-none");
+
     // change parent element coloring to be highlighted
-    $(this).addClass("active-letter");
+    $(element).addClass("active-letter");
+
     // Remove the class from all sibling elements
-    $(this).siblings().removeClass("active-letter");
+    $(element).siblings().removeClass("active-letter");
 
-    let date = $(this).attr("data-date");
-    let title = $(this).find(".letter-title").text();
-    let letterDate = $(this).find(".letter-date").text();
+    // Get necessary data from the clicked element
+    let date = $(element).attr("data-date");
+    let title = $(element).find(".letter-title").text();
+    let letterDate = $(element).find(".letter-date").text();
 
+    // Update the spotlight with the title and date
     $("#spotlight-title").text(title);
     $("#spotlight-date").text(letterDate);
 
+    // Fetch the markdown content and render it into HTML
     $.ajax({
         url: `writing/${date}.md`,
         datatype: "html",
         success: function(markdown){
-            let html = md.render(markdown);
-            $(`#right`).html(html);
+            let html = md.render(markdown); // Assuming `md.render` is the markdown renderer
+            $(`#right`).html(html); // Inject rendered HTML into #right
         }
     });
+}
+
+// Apply the function to each letter row on click
+$(".letter-row").click(function() {
+    loadNewsletterContent(this);
 });
 
     $('#signup-form').submit(function(event) {
