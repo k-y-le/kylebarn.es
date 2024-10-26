@@ -270,6 +270,8 @@
     display: block;
   }
   #right {
+    padding-top: 50px;
+    padding-bottom: 50px;
     height: 70vh;
     width: 100vw;
     position: fixed;

@@ -7,7 +7,8 @@ var width;
 
 $("document").ready(function(){
     width = $(window).width();
-    displayText();
+    $("#title").html(title + "<br>by " + author);
+    $("#title-mobile").html(title + "<br>by " + author);
     
     if (width < 768) {
         var titleInfoMobileHeight = $("#title-info-mobile").outerHeight();
@@ -41,6 +42,23 @@ $("document").ready(function(){
             // Simulate loading the corresponding newsletter markdown
             loadSpecificNewsletter(newsletterDate);
         }
+    } else {
+        // get the most recent writing - the first letter-title element in the html
+        let date = $(".letter-row").first().attr("data-date");
+        // set the spotlight title and date to the most recent writing
+        $("#spotlight-title").text($(".letter-row").first().find(".letter-title").text()); 
+        $("#spotlight-date").text($(".letter-row").first().find(".letter-date").text());       
+
+        $(".letter-row").first().addClass("active-letter");
+
+        $.ajax({
+            url: `writing/${date}.md`,
+            datatype: "html",
+            success: function(markdown){
+                let html = md.render(markdown);
+                $(`#right`).html(html);
+            }
+        });
     }
 
     // Click event to update the URL and load the newsletter
@@ -67,28 +85,6 @@ $("#handle").draggable({
     }
 });
 
-function displayText(){
-    $("#title").html(title + "<br>by " + author);
-    $("#title-mobile").html(title + "<br>by " + author);
-
-
-    // get the most recent writing - the first letter-title element in the html
-    let date = $(".letter-row").first().attr("data-date");
-    // set the spotlight title and date to the most recent writing
-    $("#spotlight-title").text($(".letter-row").first().find(".letter-title").text()); 
-    $("#spotlight-date").text($(".letter-row").first().find(".letter-date").text());       
-
-    $(".letter-row").first().addClass("active-letter");
-    
-    $.ajax({
-        url: `writing/${date}.md`,
-        datatype: "html",
-        success: function(markdown){
-            let html = md.render(markdown);
-            $(`#right`).html(html);
-        }
-    });
-}
 
 function loadSpecificNewsletter(date) {
     let $element = $(`.letter-row[data-date="${date}"]`);
@@ -124,6 +120,7 @@ function loadNewsletterContent(element) {
         url: `writing/${date}.md`,
         datatype: "html",
         success: function(markdown){
+            console.log("fetched markdown content");
             let html = md.render(markdown); // Assuming `md.render` is the markdown renderer
             $(`#right`).html(html); // Inject rendered HTML into #right
         }
