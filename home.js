@@ -17,4 +17,5 @@ $(".home-click").click(function(e){
 })
 $("body").click(function(){
     $('.info-box').hide();
+    $('#cover-info').hide();
 })

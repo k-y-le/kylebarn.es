@@ -46,6 +46,15 @@ a:hover {
   height: auto;
 }
 
+#cover-info {
+  z-index: 3;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10% 25% 10% 25%;
+  height: 100%;
+}
+
 .info-img {
   width: 44%;
   height: 24.75%;
