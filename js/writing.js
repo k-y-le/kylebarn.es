@@ -66,7 +66,6 @@ $("document").ready(function(){
         var date = $(this).data('date');
         // Update the URL to include the date parameter
         history.pushState(null, null, '?date=' + date);
-        loadNewsletter(date);
     });
 });
 
@@ -115,12 +114,16 @@ function loadNewsletterContent(element) {
     $("#spotlight-title").text(title);
     $("#spotlight-date").text(letterDate);
 
+    // Change the title of the page
+    $('title').text(title);
+
     // Fetch the markdown content and render it into HTML
     $.ajax({
         url: `writing/${date}.md`,
         datatype: "html",
         success: function(markdown){
-            console.log("fetched markdown content");
+            // console.log("fetched markdown content");
+            $('meta[name="description"]').attr('content', markdown.substring(0,140));            
             let html = md.render(markdown); // Assuming `md.render` is the markdown renderer
             $(`#right`).html(html); // Inject rendered HTML into #right
         }
