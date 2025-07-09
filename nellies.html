@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLY Point Cloud Visualizer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #000;
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            width: 100vw;
+            height: 100vh;
+        }
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 18px;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <div id="loading">Loading point cloud...</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        let scene, camera, renderer, controls, points;
+        let isLoading = true;
+        let startTime = Date.now();
+
+        // Initialize the scene
+        function init() {
+            // Scene setup
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0xffffff);
+
+            // Camera setup
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.set(0, 0, 5);
+
+            // Renderer setup
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            document.getElementById('container').appendChild(renderer.domElement);
+
+            // Controls setup (manual implementation since OrbitControls isn't available)
+            setupControls();
+
+            // Load PLY file
+            loadPLY();
+
+            // Start render loop
+            animate();
+        }
+
+        // Manual orbit controls implementation
+        let cameraDistance = 5; // Will be updated when PLY loads
+        let targetX = 0, targetY = 0;
+        
+        function updateCameraPosition() {
+            camera.position.x = Math.cos(targetX) * Math.cos(targetY) * cameraDistance;
+            camera.position.y = Math.sin(targetY) * cameraDistance;
+            camera.position.z = Math.sin(targetX) * Math.cos(targetY) * cameraDistance;
+            camera.lookAt(0, 0, 0);
+        }
+        
+        function setupControls() {
+            let isMouseDown = false;
+            let mouseX = 0, mouseY = 0;
+            let windowHalfX = window.innerWidth / 2;
+            let windowHalfY = window.innerHeight / 2;
+
+            // Mouse controls
+            renderer.domElement.addEventListener('mousedown', (event) => {
+                isMouseDown = true;
+                mouseX = event.clientX - windowHalfX;
+                mouseY = event.clientY - windowHalfY;
+            });
+
+            renderer.domElement.addEventListener('mouseup', () => {
+                isMouseDown = false;
+            });
+
+            renderer.domElement.addEventListener('mousemove', (event) => {
+                if (!isMouseDown) return;
+
+                let newMouseX = event.clientX - windowHalfX;
+                let newMouseY = event.clientY - windowHalfY;
+
+                targetX += (newMouseX - mouseX) * 0.005;
+                targetY += (newMouseY - mouseY) * 0.005;
+
+                mouseX = newMouseX;
+                mouseY = newMouseY;
+
+                // Rotate camera around origin
+                updateCameraPosition();
+            });
+
+            // Zoom with mouse wheel
+            renderer.domElement.addEventListener('wheel', (event) => {
+                event.preventDefault();
+                const scale = event.deltaY > 0 ? 1.1 : 0.9;
+                camera.position.multiplyScalar(scale);
+                camera.position.clampLength(1, 100);
+                cameraDistance = camera.position.length();
+            });
+
+            // Touch controls for mobile
+            let touchStartX = 0, touchStartY = 0;
+            let touchDistance = 0;
+
+            renderer.domElement.addEventListener('touchstart', (event) => {
+                event.preventDefault();
+                if (event.touches.length === 1) {
+                    touchStartX = event.touches[0].clientX;
+                    touchStartY = event.touches[0].clientY;
+                } else if (event.touches.length === 2) {
+                    touchDistance = Math.sqrt(
+                        Math.pow(event.touches[0].clientX - event.touches[1].clientX, 2) +
+                        Math.pow(event.touches[0].clientY - event.touches[1].clientY, 2)
+                    );
+                }
+            });
+
+            renderer.domElement.addEventListener('touchmove', (event) => {
+                event.preventDefault();
+                if (event.touches.length === 1) {
+                    let deltaX = (event.touches[0].clientX - touchStartX) * 0.005;
+                    let deltaY = (event.touches[0].clientY - touchStartY) * 0.005;
+
+                    targetX += deltaX;
+                    targetY += deltaY;
+
+                    updateCameraPosition();
+
+                    touchStartX = event.touches[0].clientX;
+                    touchStartY = event.touches[0].clientY;
+                } else if (event.touches.length === 2) {
+                    let currentDistance = Math.sqrt(
+                        Math.pow(event.touches[0].clientX - event.touches[1].clientX, 2) +
+                        Math.pow(event.touches[0].clientY - event.touches[1].clientY, 2)
+                    );
+                    let scale = touchDistance / currentDistance;
+                    camera.position.multiplyScalar(scale);
+                    camera.position.clampLength(1, 100);
+                    cameraDistance = camera.position.length();
+                    touchDistance = currentDistance;
+                }
+            });
+        }
+
+        // PLY file loader
+        function loadPLY() {
+            fetch('img/nellies.ply')
+                .then(response => response.arrayBuffer())
+                .then(buffer => {
+                    console.log('PLY file loaded, size:', buffer.byteLength, 'bytes');
+                    const geometry = parsePLY(buffer);
+                    
+                    // Debug info
+                    console.log('Parsed geometry:');
+                    console.log('- Vertex count:', geometry.attributes.position.count);
+                    console.log('- Position array length:', geometry.attributes.position.array.length);
+                    console.log('- Color array length:', geometry.attributes.color.array.length);
+                    
+                    // Create point material with animated colors
+                    const material = new THREE.PointsMaterial({
+                        size: 1.0,
+                        vertexColors: true,
+                        sizeAttenuation: false
+                    });
+
+                    // Create points object
+                    points = new THREE.Points(geometry, material);
+                    
+                    // Store original positions for color animation
+                    points.userData.originalPositions = geometry.attributes.position.array.slice();
+                    
+                    scene.add(points);
+
+                    // Center the point cloud
+                    geometry.computeBoundingBox();
+                    const center = geometry.boundingBox.getCenter(new THREE.Vector3());
+                    const size = geometry.boundingBox.getSize(new THREE.Vector3());
+                    
+                    console.log('Bounding box:');
+                    console.log('- Min:', geometry.boundingBox.min);
+                    console.log('- Max:', geometry.boundingBox.max);
+                    console.log('- Center:', center);
+                    console.log('- Size:', size);
+                    
+                    points.position.sub(center);
+
+                    // Adjust camera distance based on bounding box
+                    const maxDimension = Math.max(size.x, size.y, size.z);
+                    cameraDistance = maxDimension * 2;
+                    camera.position.set(0, 0, cameraDistance);
+                    
+                    console.log('Camera distance set to:', cameraDistance);
+                    console.log('Initial camera position:', camera.position);
+
+                    // Hide loading message
+                    document.getElementById('loading').style.display = 'none';
+                    isLoading = false;
+                })
+                .catch(error => {
+                    console.error('Error loading PLY file:', error);
+                    document.getElementById('loading').textContent = 'Error loading point cloud';
+                });
+        }
+
+        // Binary PLY parser
+        function parsePLY(buffer) {
+            const view = new DataView(buffer);
+            const decoder = new TextDecoder('utf-8');
+            
+            // Read header as text to find end_header
+            let headerEnd = 0;
+            let headerText = '';
+            
+            // Find the header by looking for "end_header\n"
+            const headerBytes = new Uint8Array(buffer, 0, Math.min(2048, buffer.byteLength));
+            headerText = decoder.decode(headerBytes);
+            
+            const endHeaderIndex = headerText.indexOf('end_header');
+            if (endHeaderIndex === -1) {
+                throw new Error('Could not find end_header in PLY file');
+            }
+            
+            // Find the actual byte position after "end_header\n"
+            headerEnd = headerText.indexOf('\n', endHeaderIndex) + 1;
+            
+            console.log('Header ends at byte:', headerEnd);
+            console.log('Full header text:');
+            console.log(headerText.substring(0, endHeaderIndex + 20));
+            console.log('=== END HEADER ===');
+            
+            // Parse header for vertex count and properties
+            const lines = headerText.split('\n');
+            let vertexCount = 0;
+            let properties = [];
+            let inVertexElement = false;
+            
+            for (const line of lines) {
+                const trimmed = line.trim();
+                if (trimmed.startsWith('element vertex')) {
+                    vertexCount = parseInt(trimmed.split(' ')[2]);
+                    inVertexElement = true;
+                    console.log('Found vertex count:', vertexCount);
+                } else if (trimmed.startsWith('element') && inVertexElement) {
+                    inVertexElement = false;
+                } else if (trimmed.startsWith('property') && inVertexElement) {
+                    const parts = trimmed.split(' ');
+                    properties.push({
+                        type: parts[1],
+                        name: parts[2]
+                    });
+                }
+            }
+            
+            console.log('Properties found:', properties);
+            
+            // Check specifically for color properties
+            const hasColors = properties.some(p => 
+                ['red', 'green', 'blue', 'r', 'g', 'b'].includes(p.name)
+            );
+            console.log('Has color properties:', hasColors);
+            console.log('Color properties:', properties.filter(p => 
+                ['red', 'green', 'blue', 'r', 'g', 'b'].includes(p.name)
+            ));
+            
+            // Calculate bytes per vertex
+            let bytesPerVertex = 0;
+            for (const prop of properties) {
+                switch (prop.type) {
+                    case 'float':
+                    case 'float32':
+                        bytesPerVertex += 4;
+                        break;
+                    case 'double':
+                        bytesPerVertex += 8;
+                        break;
+                    case 'uchar':
+                    case 'uint8':
+                        bytesPerVertex += 1;
+                        break;
+                    case 'ushort':
+                    case 'uint16':
+                        bytesPerVertex += 2;
+                        break;
+                    case 'uint':
+                    case 'uint32':
+                    case 'int':
+                    case 'int32':
+                        bytesPerVertex += 4;
+                        break;
+                }
+            }
+            
+            console.log('Bytes per vertex:', bytesPerVertex);
+            console.log('Expected total data bytes:', vertexCount * bytesPerVertex);
+            console.log('Actual remaining bytes:', buffer.byteLength - headerEnd);
+            
+            // Parse binary vertex data
+            const positions = [];
+            const colors = [];
+            
+            for (let i = 0; i < vertexCount; i++) {
+                const offset = headerEnd + i * bytesPerVertex;
+                let propOffset = 0;
+                
+                let x, y, z, r, g, b;
+                
+                for (const prop of properties) {
+                    let value;
+                    
+                    switch (prop.type) {
+                        case 'float':
+                        case 'float32':
+                            value = view.getFloat32(offset + propOffset, true); // little endian
+                            propOffset += 4;
+                            break;
+                        case 'double':
+                            value = view.getFloat64(offset + propOffset, true);
+                            propOffset += 8;
+                            break;
+                        case 'uchar':
+                        case 'uint8':
+                            value = view.getUint8(offset + propOffset);
+                            propOffset += 1;
+                            break;
+                        case 'ushort':
+                        case 'uint16':
+                            value = view.getUint16(offset + propOffset, true);
+                            propOffset += 2;
+                            break;
+                        case 'uint':
+                        case 'uint32':
+                            value = view.getUint32(offset + propOffset, true);
+                            propOffset += 4;
+                            break;
+                        case 'int':
+                        case 'int32':
+                            value = view.getInt32(offset + propOffset, true);
+                            propOffset += 4;
+                            break;
+                    }
+                    
+                    // Assign values based on property name
+                    switch (prop.name) {
+                        case 'x': x = value; break;
+                        case 'y': y = value; break;
+                        case 'z': z = value; break;
+                        case 'red':
+                        case 'r': r = value; break;
+                        case 'green':
+                        case 'g': g = value; break;
+                        case 'blue':
+                        case 'b': b = value; break;
+                    }
+                }
+                
+                // Add position
+                positions.push(x, y, z);
+                
+                // Add color (normalize if needed)
+                if (r !== undefined && g !== undefined && b !== undefined) {
+                    // Normalize colors from 0-255 to 0-1 if needed
+                    const nr = r > 1 ? r / 255 : r;
+                    const ng = g > 1 ? g / 255 : g;
+                    const nb = b > 1 ? b / 255 : b;
+                    colors.push(nr, ng, nb);
+                    
+                    // Debug first few colors
+                    if (i < 5) {
+                        console.log(`Vertex ${i} color: r=${r}, g=${g}, b=${b} -> normalized: ${nr}, ${ng}, ${nb}`);
+                    }
+                } else {
+                    // Use gradient color based on position for animation
+                    colors.push(1.0, 0.0, 0.0); // Will be animated later
+                    
+                    // Debug missing colors
+                    if (i < 5) {
+                        console.log(`Vertex ${i} missing colors: r=${r}, g=${g}, b=${b} - using animated gradient`);
+                    }
+                }
+            }
+            
+            console.log('Successfully parsed', positions.length / 3, 'vertices');
+
+            // Create geometry
+            const geometry = new THREE.BufferGeometry();
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+            geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+            return geometry;
+        }
+
+        // Function to convert HSV to RGB
+        function hsvToRgb(h, s, v) {
+            let r, g, b;
+            const i = Math.floor(h * 6);
+            const f = h * 6 - i;
+            const p = v * (1 - s);
+            const q = v * (1 - f * s);
+            const t = v * (1 - (1 - f) * s);
+            
+            switch (i % 6) {
+                case 0: r = v, g = t, b = p; break;
+                case 1: r = q, g = v, b = p; break;
+                case 2: r = p, g = v, b = t; break;
+                case 3: r = p, g = q, b = v; break;
+                case 4: r = t, g = p, b = v; break;
+                case 5: r = v, g = p, b = q; break;
+            }
+            
+            return [r, g, b];
+        }
+        
+        // Update colors with animated gradient
+        function updateColors() {
+            if (!points || !points.userData.originalPositions) return;
+            
+            const time = (Date.now() - startTime) * 0.001; // Convert to seconds
+            const colors = points.geometry.attributes.color.array;
+            const positions = points.userData.originalPositions;
+            
+            for (let i = 0; i < positions.length; i += 3) {
+                const x = positions[i];
+                const y = positions[i + 1];
+                const z = positions[i + 2];
+                
+                // Create gradient based on position and time
+                const distance = Math.sqrt(x * x + y * y + z * z);
+                const angle = Math.atan2(y, x);
+                
+                // Animated hue based on position and time
+                let hue = (angle / (Math.PI * 2)) + 0.5; // Normalize angle to 0-1
+                hue += time * 0.1; // Add time-based animation
+                hue += distance * 0.05; // Add distance-based variation
+                hue = hue % 1.0; // Keep in 0-1 range
+                
+                // Convert HSV to RGB
+                const [r, g, b] = hsvToRgb(hue, 0.8, 0.9);
+                
+                // Update color array
+                const colorIndex = i;
+                colors[colorIndex] = r;
+                colors[colorIndex + 1] = g;
+                colors[colorIndex + 2] = b;
+            }
+            
+            // Mark colors as needing update
+            points.geometry.attributes.color.needsUpdate = true;
+        }
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            // Update colors if we have a point cloud without original colors
+            if (points && points.userData.originalPositions) {
+                updateColors();
+            }
+            
+            renderer.render(scene, camera);
+        }
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Start the application
+        init();
+    </script>
+</body>
+</html>
