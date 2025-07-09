@@ -64,7 +64,7 @@
         }
 
         // Manual orbit controls implementation
-        let cameraDistance = 5; // Will be updated when PLY loads
+        let cameraDistance = 10; // Will be updated when PLY loads
         let targetX = 0, targetY = 0;
         
         function updateCameraPosition() {
@@ -204,7 +204,7 @@
 
                     // Adjust camera distance based on bounding box
                     const maxDimension = Math.max(size.x, size.y, size.z);
-                    cameraDistance = maxDimension * 2;
+                    cameraDistance = maxDimension * 0.8;
                     camera.position.set(0, 0, cameraDistance);
                     
                     console.log('Camera distance set to:', cameraDistance);
