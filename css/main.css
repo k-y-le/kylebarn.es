@@ -1,5 +1,5 @@
 body {
-  font-family: 'Courier New', monospace;
+  font-family: 'Meta-Old-French', Georgia, 'Times New Roman', Times, serif;
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -20,10 +20,10 @@ body {
 }
 
 a {
-  color: white;
+  color: #8B8B8B;
 }
 a:hover {
-  color: white;
+  color: #6D6D6D;
 }
 
 .scrollable-div {
@@ -62,12 +62,116 @@ a:hover {
 
 .info-box {
   z-index: 3;
+  width: 40%;
+  max-height: 100%;
+  overflow: auto;
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.4);
-  color: white;
-  display:none;
-  /* pointer-events: none; */
+  left: 30%;
+  top: 0%;
+  margin: 0 auto;
+  background: white;
   padding: 2rem;
+  /* border-radius: 8px; */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  font-size: 1.2rem;
+  line-height: 1.6;
+  display:none;
+}
+
+.info-last {
+  padding-bottom: 4rem !important;
+}
+
+.info-item {
+    margin-bottom: .5rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: .5rem;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.info-header-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.info-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    text-align: left;
+}
+
+.info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
+.info-date {
+    font-size: 1.4rem;
+    color: #666;
+    margin: 0;
+    text-align: left;
+}
+
+.info-description {
+    margin-left: 1.5rem;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.7;
+}
+
+.info-link {
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.info-link:hover {
+    color: #6D6D6D;
+}
+
+.info-image {
+    margin-top: 1rem;
+    max-width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    display: none;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.info-image.show {
+    display: block;
+}
+
+.title-link {
+  color: black;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .info-box {
+        width: 80%;
+        padding: 5%;
+        font-size: 1.1rem;
+        left: 5%;
+    }
+    
+    .info-description {
+        margin-left: 1rem;
+    }
 }
 
 .info-box-img {
@@ -96,17 +200,22 @@ a:hover {
   position: fixed;
   width: 15%;
 }
+.home-img-10 {
+  position: fixed;
+  width: 10%;
+}
 
 .home-click {
   cursor: all-scroll;
 }
 
+.grid-container {
+  display: none;
+}
+
 @media only screen and (max-width: 760px) {
   #home-text {
     width: 35%;
-  }
-  .info-box {
-    font-size: x-small;
   }
   #performance-textbox {
     font-size: small;
@@ -114,6 +223,76 @@ a:hover {
   #lamp {
     width: 40%;
     right: 2% !important;
+  }
+  .home-front {
+    display: none;
+  }
+  .home-click {
+    display: none;
+  }
+  .img-mobile {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .info-title {
+    font-size: 1.2rem;
+  }
+  .info-date {
+    font-size: 1.2rem;
+  }
+  .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      width: 100vw;
+      height: 100vh;
+      gap: 1px;
+      background-color: #333;
+      overflow: hidden
+  }
+
+  .grid-cell {
+      display: flex;
+      flex-direction: column;
+      background-color: #fefae0;
+      position: relative;
+      min-height: 0;
+      max-height: calc(100vh / 3 - 1px);
+      height: calc(100vh / 3 - 1px);
+  }
+
+  .top-image {
+      height: calc(70vh / 3);
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .top-image img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+  }
+
+  .bottom-image {
+      height: calc(30vh / 3);
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .bottom-image img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
   }
 }
 

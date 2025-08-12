@@ -16,10 +16,65 @@
 
   <title>kyle barnes</title>
   <link rel="stylesheet" href="css/main.css">
+
+  <style>
+    @font-face {
+      font-family: 'Meta-Old-French';
+      src: url('font/meta-old-french.woff2') format('woff2'),
+            url('font/meta-old-french.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
 <body>
+  <div class="grid-container">
+        <div class="grid-cell mobile-click" id="writing">
+            <div class="top-image"><img src="img/img_writing.png" alt="pic of kyle" class="img-mobile"></div>
+            <div class="bottom-image">  <img src="img/text_writing.png" alt="writing in handwriting" class="img-mobile"></div>
+        </div>
+        <div class="grid-cell mobile-click" id="teaching">
+            <div class="top-image">  <img src="img/img_teaching.png" alt="pic of kyle" class="img-mobile"></div>
+            <div class="bottom-image"><img src="img/text_teaching.png" alt="teaching in handwriting" class="img-mobile"></div>
+        </div>
+        <div class="grid-cell mobile-click" id="arena">
+          <a href="https://www.are.na/kyle-barnes" target="_blank">
+            <div class="top-image">  <img src="img/img_arena.png" alt="pic of kyle" class="img-mobile"></div>
+            <div class="bottom-image"><img src="img/text_arena.png" alt="are.na in handwriting" class="img-mobile"></div>
+          </a>
+        </div>
+        <div class="grid-cell mobile-click" id="happenings">
+            <div class="top-image">  <img src="img/img_happenings.png" alt="pic of kyle" class="img-mobile"></div>
+            <div class="bottom-image"><img src="img/text_happenings.png" alt="happenings in handwriting" class="img-mobile"></div>
+        </div>
+        <div class="grid-cell mobile-click" id="kyle">
+            <div class="top-image">  <img src="img/img_kyle.png" alt="photo of kyle by cynthia liu" class="img-mobile"></div>
+            <div class="bottom-image"><img src="img/text_kyle.png" alt="kyle barnes in handwriting" class="img-mobile"></div>
+        </div>
+        <div class="grid-cell mobile-click" id="projects">
+            <div class="top-image">  <img src="img/img_professional.png" alt="pic of kyle" class="img-mobile"></div>
+            <div class="bottom-image"><img src="img/text_professional.png" alt="professional in handwriting" class="img-mobile"></div>
+        </div>
+        <div class="grid-cell mobile-click" id="performances">
+            <a href="https://chimerascollective.cargo.site/" target="_blank">
+            <div class="top-image">  <img src="img/img_chimeras.png" alt="pic of kyle and olivia" class="img-mobile"></div>
+            <div class="bottom-image"><img src="img/text_chimeras.png" alt="chimeras in handwriting" class="img-mobile"></div>
+            </a>
+        </div>
+        <div class="grid-cell mobile-click" id="art">
+            <div class="top-image">  <img src="img/img_art.png" alt="pic of kyle" class="img-mobile"></div>
+            <div class="bottom-image"><img src="img/text_art.png" alt="art in handwriting" class="img-mobile"></div>
+        </div>
+        <div class="grid-cell mobile-click" id="soup">
+            <a href="https://tomorrowsoup.com/" target="_blank">
+            <div class="top-image">  <img src="img/img_soup.png" alt="pic of kyle and raya" class="img-mobile"></div>
+            <div class="bottom-image"><img src="img/text_soup.png" alt="tomorrow soup in handwriting" class="img-mobile"></div>
+            </a>
+        </div>
+    </div>
 
   <!-- baseline images : name, trees and grass in white space -->
-  <img src="img/text_kyle.png" alt="kyle barnes written in handwriting" id="home-text" class="home-img-25 home-front" style="left: 0; right: 0; margin: auto; top: 16%;">
+  <img src="img/text_kyle.png" alt="kyle barnes written in handwriting" id="home-text" class="home-img-25 home-front" style="left: 0; right: 0; margin: auto; top: 22%;">
 
   <img src="img/home_tree1.png" alt="tree 1" class="home-img-25 home-front" style="left: 86%; top: 61%;">
   <img src="img/home_tree1.png" alt="tree 1" class="home-img-25 home-front" style="left: 12%; top: -10%;">
@@ -28,102 +83,428 @@
   <img src="img/home_tree2.png" alt="tree 2" class="home-img-25 home-front" style="left: 19%; top: 48%;">
 
   <img src="img/home_grass.png" alt="grass" class="home-img-25 home-front" style="left: 35%; top: 5%;">
-  <img src="img/home_grass.png" alt="grass" class="home-img-25 home-front" style="left: 6%; top: 32%;">
+  <img src="img/home_grass.png" alt="grass" class="home-img-25 home-front" style="left: 11%; top: 33%;">
   <img src="img/home_grass.png" alt="grass" class="home-img-25 home-front" style="left: 81%; top: 14%;">
   <img src="img/home_grass.png" alt="grass" class="home-img-25 home-front" style="left: 51%; top: 51%;">
   <img src="img/home_grass.png" alt="grass" class="home-img-25 home-front" style="left: 34%; top: 69%;">
   <img src="img/home_grass.png" alt="grass" class="home-img-25 home-front" style="left: -3%; top: 91%;">
   <img src="img/home_grass.png" alt="grass" class="home-img-25 home-front" style="left: 69%; top: 90%;">
 
-  <!-- each image hovers to change text, and include info when clicked on about the project / whatever -->
-  <div id="cover-info" style="display: block;">
-    <p>
-      kyle barnes is an artist-researcher who uses computing and community as creative mediums, seeding ritual gatherings which facilitate practices including ecological mourning, radical attention, and more-than-human collaboration. currently, he’s working on:
-    </p>
-    <p>   - stewarding <a href="https://chimerascollective.cargo.site/" target="_blank">Chimeras Collective</a>, creating wild and whimsical interspecies gatherings and classes in nyc</p>
-    <p>   - teaching <a href="https://periodic-gong-28b.notion.site/becomingcyborg?pvs=4" target="_blank">becoming cyborg</a>, a class on technological embodiment</p>
-    <p>   - teaching <a href="https://www.schoolofattention.org/enroll/p/creatures" target="_blank">CREATURES</a>, a seminar on urban vermin and disgust</p>
-    <p>   - facilitating fugitive study on the streets of nyc (with the <a href="https://www.schoolofattention.org/" target="_blank">strother school of radical attention</a>)</p>
-    <p>   - hosting monthly rituals to honor the full moon</p>
-    <p>   - selling cornbread at pop-ups and markets to raise funds for palestine</p>
-    <p>   - benchmarking geospatial foundation models (with <a href="https://madewithclay.org/" target="_blank">clay</a>)</p>
-    <p>   - reforming democracy, bit by bit (with <a href="https://www.electoral-lab.org/" target="_blank">the electoral innovation lab</a>)</p>
-    <p>   - sending a biweekly <a href="https://www.kylebarn.es/writing" target="_blank">Moon Bulletin</a> highlighting events in nyc</p>
-    <p>   - writing a <a href="https://www.kylebarn.es/writing" target="_blank">newsletter</a> for living well and keeping up with friends</p>
-    <br>
-    <p>if you have a project that we can collaborate on, please reach out! available as a freelance strategist/designer or also just a friend ☻</p>
-    <p>click anywhere to explore more</p>
+
+  <img src="img/img_kyle.png" id="kyle" alt="picture of kyle taken by cynthia liu" class="home-img-20 home-click" style="left: 9%; top: 16%;">
+  <div class="info-box more-info-kyle info-box-lg info-last">
+    <h1 class="info-header-title">i'm kyle, an artist-researcher trying to live well on a damaged planet.</h1>
+    <img id="imgkyle" class="info-image" style="display:block" src="https://d2w9rnfcy7mm78.cloudfront.net/38721058/original_df959dce5a9b3a63881c71e562be755f.png?1754945513?bc=0" alt="pic of kyle">
+    <h3>i use community and computing as creative mediums, seeding playful ritual gatherings. i facilitate, write, design, draw, dj, bake, paint, study, strategize, teach, collaborate, build, destroy, dance, and spend a lot of time upside down.</h3>
+    <h3 class="info-last">i'm one half of <a href="https://chimerascollective.cargo.site/" target="_blank">chimeras collective</a>, hosting interspecies gatherings and classes that re-enchant the urban ecologies of nyc. and i'm one half of <a href="https://tomorrowsoup.com/" target="_blank">tomorrow soup</a>, creating alternative social and digital spaces for communal care, queer joy, and climate grief.</h3>
   </div>
 
 
-  <img src="img/home_kyle.png" id="kyle" alt="picture of kyle taken by aishah" class="home-img-25 home-click" style="left: 7%; top: 15%;">
-  <div class="info-box more-info more-info-kyle"style="left: 15%; top: 65%;">
-    <p>i believe that life is a constant process of exploration, finding our way in the world. emphasis on the our; we do this all together. i experiment with configurations of coming together -- physically and digitally -- and finding precious moments. mostly, i spend my time trying to live well on a damaged planet. if you'd like to get in touch, you can email me at kyletuhr@gmail.com</p>
+  <img src="img/img_teaching.png" id="teaching" alt="drawing of a strawberry" class="home-img-15 home-click" style="left: 61%; top: 36%;">
+  <div class="info-box more-info-teaching info-box-lg">
+    <h1 class="info-header-title">teaching</h1>
+    <p>i am a social practice artist; i teach and facilitate in non-institutional, non-hierarchical spaces.</p>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://periodic-gong-28b.notion.site/becomingcyborg" target="_blank" class="title-link">becoming cyborg</a></h2>
+          <h2 class="info-date"><i>6.25 - 7.25</i></h2>
+      </div>
+      <div class="info-description">
+          a class about technological embodiment.
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://www.schoolofattention.org/past-courses/creatures" target="_blank" class="title-link">creatures</a></h2>
+          <h2 class="info-date"><i>6.25</i></h2>
+      </div>
+      <div class="info-description">
+          a class attending to disgust and urban vermin: rats, pigeons, cockroaches. with the <a href="https://www.schoolofattention.org/" target="_blank">strother school of radical attention</a>.
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://periodic-gong-28b.notion.site/Becoming-Creature-e7ad5fc6aece4d6f9a48a7be0508e6df" target="_blank" class="title-link">becoming creature</a></h2>
+          <h2 class="info-date"><i>10.24 - 11.24</i></h2>
+      </div>
+      <div class="info-description">
+          a class of philosophical & embodied explorations of our creature worlds.
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://www.schoolofattention.org/sidewalk-study" target="_blank" class="title-link">sidewalk studies</a></h2>
+          <h2 class="info-date"><i>7.24 -</i></h2>
+      </div>
+      <div class="info-description">
+          fugitive study and practice on the streets of nyc, with the <a href="https://www.schoolofattention.org/" target="_blank">strother school of radical attention</a>.
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://www.pratt.edu/prattfolio/stories/change-your-gaze/" target="_blank" class="title-link">symbiotic futures guest lecture</a></h2>
+          <h2 class="info-date"><i>3.24</i></h2>
+      </div>
+      <div class="info-description">
+          a becoming creature guest workshop for pratt masters in communication design course, symbiotic futures. as <a href="https://chimerascollective.cargo.site/" target="_blank">chimeras collective</a>.
+      </div>
+    </div>
+    <div class="info-item info-last">
+      <div class="info-header">
+          <h2 class="info-title"><a href="/seminar.html" target="_blank" class="title-link">laboratories of contemporary surveillance</a></h2>
+          <h2 class="info-date"><i>1.24</i></h2>
+      </div>
+      <div class="info-description">
+          an experimental dinner seminar series. with meher hans.
+      </div>
+    </div>
   </div>
 
+  <a href="https://www.are.na/kyle-barnes" target="_blank"><img src="img/img_arena.png" id="arena" alt="pic of kyle" class="home-img-15 home-click" style="left: 83%; top: 50%;"></a>
 
-  <img src="img/home_strawberry.png" id="representable" alt="drawing of a strawberry" class="home-img-15 home-click" style="left: 61%; top: 36%;">
-  <div class="info-box more-info more-info-representable"style="left: 4%; top: 11%;">
-    <p><a href="https://www.representable.org" target="_blank">representable</a> is a community mapping platform to fight gerrymandering. as co-founder and executive director, i raised funds, grew the team and network, and ultimately engaged thousands in over 20 states to map their communities and advocate for fairer districts that represent community voices.</p>
+  <a href="http://tomorrowsoup.com" target="_blank"><img src="img/img_soup.png" id="soup" alt="pic of kyle and raya" class="home-img-10 home-click" style="right: 11%; top: 1%;"></a>
+
+  <img src="img/img_writing.png" id="writing" alt="pic of kyle" class="home-img-10 home-click" style="left: 52%; top: -2%;">
+  <div class="info-box more-info-writing info-box-lg">
+    <h1 class="info-header-title">writing</h1>
+    <p>writing to metabolize my experience of the world through analysis of culture, science, and creativity. open to collaborations on aligned writing projects; reach out!</p>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="/writing.html" target="_blank" class="title-link">new rituals for living well</a></h2>
+          <h2 class="info-date"><i>9.20 -</i></h2>
+      </div>
+      <div class="info-description">
+          diy personal newsletter for sharing my creative thinking. 
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://buttondown.com/moon-bulletin" target="_blank" class="title-link">moon bulletin</a></h2>
+          <h2 class="info-date"><i>1.25 -</i></h2>
+      </div>
+      <div class="info-description">
+          events i (and friends) host in nyc. sent every first and third quarter moon. 
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://buttondown.com/chimerascollective" target="_blank" class="title-link">chimeras collective</a></h2>
+          <h2 class="info-date"><i>6.25 -</i></h2>
+      </div>
+      <div class="info-description">
+          monthly dispatches sharing explorations and upcoming programming by <a href="" target="_blank">chimeras collective</a>. 
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://schoolofattention.substack.com/p/why-study-disgust" target="_blank" class="title-link">why study disgust?</a></h2>
+          <h2 class="info-date"><i>6.25</i></h2>
+      </div>
+      <div class="info-description">
+          considering the vermin with artist-researcher kyle barnes. 
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://longnow.org/ideas/exactitude-in-climate-science/" target="_blank" class="title-link">on exactitude in climate science</a></h2>
+          <h2 class="info-date"><i>4.24</i></h2>
+      </div>
+      <div class="info-description">
+          climate models could become infrastructure for our collective knowledge -- but the choices we make in building these simulated worlds matter. 
+      </div>
+    </div>
+    <div class="info-item info-last">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://www.kernelmag.io/3/climate-science-crystal" target="_blank" class="title-link">climate science crystal ball</a></h2>
+          <h2 class="info-date"><i>9.23</i></h2>
+      </div>
+      <div class="info-description">
+          towards a cyborg climate science. 
+      </div>
+    </div>
   </div>
-  <div class="info-box more-info more-info-representable" style="right: 14%; top: 51%;">
-    <img src="img/representable.png" alt="screenshot of representable website" class="info-box-img">
-  </div>
 
-  <a href="https://www.are.na/kyle-barnes" target="_blank"><img src="img/home_eggplant.png" id="arena" alt="drawing of an eggplant" class="home-img-15 home-click" style="left: 83%; top: 50%;"></a>
-
-  <a href="http://tomorrowsoup.com" target="_blank"><img src="img/home_soup.png" id="soup" alt="drawing of a pot of soup" class="home-img-15 home-click" style="left: -5%; top: 3%;"></a>
-
-  <a href="writing.html" target="_blank"><img src="img/home_blueberry.png" id="writing" alt="drawing of a blueberry" class="home-img-15 home-click" style="left: 49%; bottom: -13%;"></a>
-
-  <a href="performances.html" target="_blank"><img src="img/home_pepper.png" id="performances" alt="drawing of a pepper" class="home-img-15 home-click" style="right: 11%; top: 1%;"></a>
+  <a href="https://chimerascollective.cargo.site/" target="_blank"><img src="img/img_chimeras.png" id="chimeras" alt="pic of chimeras collective" class="home-img-15 home-click" style="left: -2%; top: 0%;"></a>
 
   <!-- these two have lists of other projects / art that i've done, so i can always add extra things -->
-  <img src="img/home_watermelon.png" id="art" alt="drawing of a watermelon" class="home-img-15 home-click" style="left: 9%; bottom: -3%;">
+  <img src="img/img_art.png" id="art" alt="pic of kyle" class="home-img-10 home-click" style="left: 9%; bottom: -3%;">
   <div class="info-box more-info-art info-box-lg">
-    <p>i am working on documenting my art. it's still in progress. more soon!</p>
-    <p>right now, i'm mostly working on ecologically inspired minimal calligraphic drawings, painting strange symbols of a future society, creaturely movement practices, and altars that honor nonhumans</p>
-    <!-- <p><b><a href="img/foundyou.jpg" target="_blank">found you,</a></b>a traveling sculpture (2022-23)</p>
-    <p><b><a href="https://www.youtube.com/watch?v=7lsKJEowDx0" target="_blank">breathing earth,</a></b>speculative breathing exercise and watch face collapsing capitalist and geological time (website coming soon) (2022-)</p>
-    <p><b><a href="http://grief.garden" target="_blank">grief garden,</a></b> a participatory digital memorial holding space for climate grief, in collaboration with <a href="https://www.rayamward.com" target="_blank">raya ward</a> (2022)</p>
-    <p><b><a href="http://tomorrowsoup.com/dataghosts.html" target="_blank">dataghosts,</a></b> a generative web installation about surveillance and data, in collaboration with <a href="https://www.rayamward.com" target="_blank">raya ward</a> (2021)</p>
-    <p><b><a href="tri.html" target="_blank">tri,</a></b> a creative coding triangles series (2021)</p>
-    <p><b><a href="https://www.youtube.com/playlist?list=PLQB22OrlIGkwRL7_dch8_ALax5-QaZnwP" target="_blank">sydney,static,</a></b> meditative videos of sydney oceanscapes (2020)</p>
-    <p><b><a href="scroll.html" target="_blank">scrollable activism,</a></b> internet art in response to the onset of 'Instagram activism' (2020)</p>
-    <p><b><a href="https://www.youtube.com/watch?v=on7FqUNSBh8" target="_blank">icemelt,</a></b> mixed media sonification of climate data, under mentorship of Laurie Anderson (2019)</p>
-    <p><b><a href="mandala.html" target="_blank">pixel mandala,</a></b> a generative and interactive artwork inspired by the sand mandala (2019)</p>
-    <p><b><a href="/https://www.facebook.com/princetonODUS/photos/a.1899745966804056/1899747060137280" target="_blank">art x fashion,</a></b> an art inspired fashion design for a show at the princeton university art museum (2019)</p> -->
+    <h1 class="info-header-title">art</h1>
+    <p>projects in visual art, performance, and speculative design. i am medium agnostic, more interested in community and collaboration than curation and polish.</p>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="performances.html" target="_blank" class="title-link">performances</a></h2>
+          <h2 class="info-date"><i>9.19 -</i></h2>
+      </div>
+      <div class="info-description">
+          a sample of some minimal, fluxus-inspired performances of coming-together.
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://breathingearth.org/" target="_blank" class="title-link">breathing earth</a></h2>
+          <h2 class="info-date"><i>9.23</i></h2>
+      </div>
+      <div class="info-description">
+          speculative planetary performance collapsing capitalist and geological time.
+        </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="http://grief.garden" target="_blank" class="title-link">grief garden</a></h2>
+          <h2 class="info-date"><i>5.22</i></h2>
+      </div>
+      <div class="info-description">
+          a participatory digital memorial holding space for climate grief, as <a href="https://tomorrowsoup.com/" target="_blank">tomorrow soup</a>.
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="http://tomorrowsoup.com/dataghosts.html" target="_blank" class="title-link">dataghosts</a></h2>
+          <h2 class="info-date"><i>5.22</i></h2>
+      </div>
+      <div class="info-description">
+          a generative web installation about surveillance and data, as <a href="https://tomorrowsoup.com/" target="_blank">tomorrow soup</a>.
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="scroll.html" target="_blank" class="title-link">scrollable activism</a></h2>
+          <h2 class="info-date"><i>7.20</i></h2>
+      </div>
+      <div class="info-description">
+          internet art in response to the massive proliferation of 'Instagram activism'
+        </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://dl.acm.org/doi/10.1145/3393914.3395858" target="_blank" class="title-link">invisiborders</a></h2>
+          <h2 class="info-date"><i>12.19</i></h2>
+      </div>
+      <div class="info-description">
+          wearable technology for critical engagement with invisible borders.
+        </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://www.youtube.com/watch?v=on7FqUNSBh8" target="_blank" class="title-link">icemelt</a></h2>
+          <h2 class="info-date"><i>1.20</i></h2>
+      </div>
+      <div class="info-description">
+          mixed media sonification of climate data, under mentorship of Laurie Anderson.
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://d2w9rnfcy7mm78.cloudfront.net/38718924/original_a7125c609b81c1d8ddd6194c95526c9c.jpg?1754939401?bc=0" target="_blank" class="title-link">art x fashion</a></h2>
+          <h2 class="info-date"><i>3.19</i></h2>
+      </div>
+      <div class="info-description">
+          art-inspired fashion show in collaboration with the princeton university art museum.
+      </div>
+    </div>
+    <div class="info-item info-last">
+      <div class="info-header">
+          <h2 class="info-title"><a href="mandala.html" target="_blank" class="title-link">pixel mandala</a></h2>
+          <h2 class="info-date"><i>5.19</i></h2>
+      </div>
+      <div class="info-description">
+          generative art creating abstracted tibetan sand mandalas.
+      </div>
+    </div>
   </div>
 
-  <img src="img/home_grapes.png" id="projects" alt="drawing of grapes" class="home-img-15 home-click" style="left: 48%; top: -6%;">
-  <div class="info-box more-info-projects info-box-lg">
-    <p><b>Schmidt Planetary Technology Lab,</b> an interdisciplinary innovation lab bringing the latest in planetary sensing technology to the social sector (2024)</p>
-    <p><b>AI + TEAs,</b> a prototype tool using AI to generate techno-economic analyses for biomanufacturing processes, (2024)</p>
-    <p><b>Schmidt Planetary Technology Lab,</b> an interdisciplinary innovation lab bringing the latest in planetary sensing technology to the social sector (2024)</p>
-    <p><b>Schmidt Sciences Climate Insitute,</b> a ~$400M philanthropic initiative to fund innovations in climate science (2023-)</p>
-    <p><b><a href="https://kylebarnes.notion.site/NoTechforApartheid-4783c1440d4e489cb4dc4664fed0a0ec" target="_blank"></a>no tech for apartheid,</b> a zine, essay, and card deck advocating for refusing labor from big tech</p>
-    <p><b><a href="https://www.invisiborders.com" target="_blank"></a>invisiborders,</b> wearable tech for engaging with invisible borders + HCI paper</p>
-    <p><b><a href="https://www.mayakerenmusic.com" target="_blank"></a>maya keren music,</b> a simple website for improvisational musician maya keren</p>
-    <p><b>just tech,</b> a course on ethical design, an initiative matching cs students with local nonprofits, a discussion group (2020-21)</p>
-    <p><b>special education resources,</b> a customized service aggregation site, created within a design thinking lab (2017-19)</p>
-    <p><b>patan, nepal,</b> a set of software and design products distributed and used by over 100,000 people annually, based out of kathmandu (2018)</p>
+  <img src="img/img_professional.png" id="professional" alt="drawing of grapes" class="home-img-10 home-click" style="left: 59%; bottom: -4%;">
+  <div class="info-box more-info-professional info-box-lg">
+    <h1 class="info-header-title">professional</h1>
+    <p>i'm available for freelance design and strategy: i work on early-stage projects building ecological resilience and creative capacity. reach out to collaborate on product design, experience design, community building and strategy.</p>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://www.representable.org/" target="_blank" class="title-link">representable</a></h2>
+          <h2 class="info-date"><i>10.19 - </i></h2>
+      </div>
+      <div class="info-description">
+          co-founder and executive director of a community mapping platform to fight gerrymandering.
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://www.electoral-lab.org/" target="_blank" class="title-link">electoral innovation lab</a></h2>
+          <h2 class="info-date"><i>12.23 -</i></h2>
+      </div>
+      <div class="info-description">
+          board member and technical lead for data-driven democracy reform.
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://madewithclay.org/" target="_blank" class="title-link">clay</a></h2>
+          <h2 class="info-date"><i>3.24 - 11.24</i></h2>
+      </div>
+      <div class="info-description">
+          fellow at open-source foundation model for earth observation data.
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://www.climatechange.ai/" target="_blank" class="title-link">climate change AI</a></h2>
+          <h2 class="info-date"><i>7.24 - 9.24</i></h2>
+      </div>
+      <div class="info-description">
+          strategy for project visualizing climate data gaps. with <a href="https://www.external-affairs.com/" target="_blank">external affairs</a>.
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://www.homeworld.bio/" target="_blank" class="title-link">homeworld collective</a></h2>
+          <h2 class="info-date"><i>10.23 - 3.24</i></h2>
+      </div>
+      <div class="info-description">
+          lead of product and design for automated techno-economic analysis tool.
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://www.schmidtsciences.org/focus-area-climate/" target="_blank" class="title-link">climate institute</a></h2>
+          <h2 class="info-date"><i>3.23 - 10.23</i></h2>
+      </div>
+      <div class="info-description">
+          data and strategy for $400M climate science funding program.
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://www.mayakerenmusic.com/" target="_blank" class="title-link">maya keren music</a></h2>
+          <h2 class="info-date"><i>5.23</i></h2>
+      </div>
+      <div class="info-description">
+          diy site for nyc based experimental musician.
+      </div>
+    </div>
+    <div class="info-item info-last">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://demexchange.com/" target="_blank" class="title-link">democratic data exchange</a></h2>
+          <h2 class="info-date"><i>9.22 - 3.23</i></h2>
+      </div>
+      <div class="info-description">
+          product manager building new reporting tools for the largest dataset in democratic politics.
+      </div>
+    </div>
   </div>
 
-  <img src="img/home_pear.png" id="happenings" alt="drawing of a pear" class="home-img-15 home-click" style="left: 35%; top: 44%;">
+  <img src="img/img_happenings.png" id="happenings" alt="pic of kyle" class="home-img-10 home-click" style="left: 38%; top: 44%;">
   <div class="info-box more-info-happenings info-box-lg">
-    <p>i regularly host happenings designed to explore what it means to live well on a damaged planet. some said gatherings are put on as 1/2 of <a href="http://tomorrowsoup.com" target="_blank">tomorrow soup</a>. some examples below:</p>
-    <p><b><a href="https://periodic-gong-28b.notion.site/Becoming-Creature-e7ad5fc6aece4d6f9a48a7be0508e6df" target="_blank">becoming creature,</a></b> a class of philosophical and embodied explorations of our creature worlds (2024)</p>
-    <p><b>egg tour,</b> a tour of egg-related places in new york city [coming soon!]</p>
-    <p><b>chimeras,</b> an emergent collective of ecologically-curious artists in brooklyn (2024-)</p>
-    <p><b>a <a href="https://www.instagram.com/p/DCNVbsJOOz-/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank">be-in,</a></b> to organize community after the 2024 election (2024)</p>
-    <p><b><a href="https://www.schoolofattention.org/sidewalk-study" target="_blank">sidewalk studies,</a></b> situationist-inspired fugitive study on the streets of new york city (2024-)</p>
-    <p><b><a href="https://www.youtube.com/watch?v=WJa7_lbsfKM" target="_blank">Beetles,</a></b>an interspecies gathering exploring the social, cultural, scientific, and aesthetic impacts of beetles (2023)</p>
-    <p><b><a href="http://tomorrowsoup.com/interregna" target="_blank">interregna,</a></b> a ritual gathering and climate memorial, as part of the <a href="https://www.e-flux.com/announcements/507829/technologies-of-critical-conscientization/" target="_blank">Con/Crit/Tec residency</a> in São Paulo (2023)</p>
-    <p><b><a href="https://www.kylebarn.es/moonjun23" target="_blank">moon parties,</a></b>a regular gathering to honor each full moon (2020-)</p>
-    <p><b>in found soil, in order to bloom,</b>a climate memorial and experimental gathering exploring soil and growth (2022)</p>
-    <p><b>ambient walks,</b>situationist inspired walks organized to attune one's senses to the natural world (2022-23)</p>
-    <p><b>experimental gatherings group,</b>an unnamed, fluid exploration of ways to be together in the world (2021-22)</p>
-    <p><b>guerilla garlic,</b>planting garlic in public space (2022)</p>
+    <h1 class="info-header-title">gatherings</h1>
+    <p>seeding rituals and designing experiences for diy community building and ecological connection.</p>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><span class="info-link" data-image="imgmoon">moon parties</span></h2>
+          <h2 class="info-date"><i>9.20 -</i></h2>
+      </div>
+      <div class="info-description">
+          ritual celebration every full moon.
+          <img id="imgmoon" class="info-image" src="https://d2w9rnfcy7mm78.cloudfront.net/38720239/original_7c680db2ff3a2a0154bb306136ccb07c.png?1754942810?bc=0" alt="moon party pic">
+      </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><span class="info-link" data-image="imgcornbread">cornbread pop-ups</span></h2>
+          <h2 class="info-date"><i>5.24 -</i></h2>
+      </div>
+      <div class="info-description">
+          baking cornbread, sharing with neighbors at fairs and farmers markets, raising funds for palestine.
+          <img id="imgcornbread" class="info-image" src="https://d2w9rnfcy7mm78.cloudfront.net/38720234/original_e1b352ec8dd8831ac6986a28b5afb50f.png?1754942804?bc=0" alt="moon party pic">
+          </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><span class="info-link" data-image="imgegg">egg tour</span></h2>
+          <h2 class="info-date"><i>4.25</i></h2>
+      </div>
+      <div class="info-description">
+          guided tour of egg-themed spots around new york city. more to come.
+          <img id="imgegg" class="info-image" src="https://d2w9rnfcy7mm78.cloudfront.net/38720235/original_07013874ba4cff2563d328f4e8a1282c.png?1754942806?bc=0" alt="moon party pic">
+          </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><span class="info-link" data-image="imgccc">computer care cafe</span></h2>
+          <h2 class="info-date"><i>9.23, 4.25</i></h2>
+      </div>
+      <div class="info-description">
+          a spa for you and your laptop. as <a href="https://tomorrowsoup.com/" target="_blank">tomorrow soup</a>.
+          <img id="imgccc" class="info-image" src="https://d2w9rnfcy7mm78.cloudfront.net/38720230/original_670104fa1a8fbe8ea5a89193bd7cfdb7.png?1754942801?bc=0" alt="moon party pic">
+          </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><span class="info-link" data-image="imggoodbye">goodbye ctfxc16502</span></h2>
+          <h2 class="info-date"><i>2.25</i></h2>
+      </div>
+      <div class="info-description">
+          a memorial for my laptop. a computer cleanse.
+          <img id="imggoodbye" class="info-image" src="https://d2w9rnfcy7mm78.cloudfront.net/38720229/original_de9e7281756d59df81f9671ce97fd026.png?1754942796?bc=0" alt="moon party pic">
+          </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><span class="info-link" data-image="imgbein">be-in</span></h2>
+          <h2 class="info-date"><i>11.24</i></h2>
+      </div>
+      <div class="info-description">
+          a post-election be-in for being with community. with amalia mayorga.
+          <img id="imgbein" class="info-image" src="https://d2w9rnfcy7mm78.cloudfront.net/38720223/original_6481aaaadac379dc43caf8333adcc7f5.png?1754942776?bc=0" alt="moon party pic">
+          </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><span class="info-link" data-image="imghaunted">a ritual for haunted landscapes</span></h2>
+          <h2 class="info-date"><i>9.24, 10.24</i></h2>
+      </div>
+      <div class="info-description">
+          a ritual for honoring the ghosts of our local land. in woodstock and brooklyn, ny.
+          <img id="imghaunted" class="info-image" src="https://d2w9rnfcy7mm78.cloudfront.net/38720232/original_ad47374fad86e879343e7e9b4624ab37.png?1754942802?bc=0" alt="moon party pic">
+          </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><span class="info-link" data-image="imgexchange">exchange of fascinations</span></h2>
+          <h2 class="info-date"><i>9.23</i></h2>
+      </div>
+      <div class="info-description">
+          a workshop bringing together climate scientists and artists to create around uncertainty. designed an accompanying zine/poster.
+          <img id="imgexchange" class="info-image" src="https://d2w9rnfcy7mm78.cloudfront.net/38720249/original_d636e4713d07f0dce2ae6c4a918bde6a.png?1754942868?bc=0" alt="moon party pic">
+          </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><a href="https://www.youtube.com/watch?v=WJa7_lbsfKM" target="_blank" class="title-link">beetles</a></h2>
+          <h2 class="info-date"><i>9.23</i></h2>
+      </div>
+      <div class="info-description">
+          an interspecies gathering honoring the aesthetic, cultural, and scientific impacts of beetles. as <a href="https://chimerascollective.cargo.site/" target="_blank">chimeras collective</a>.
+          </div>
+    </div>
+    <div class="info-item">
+      <div class="info-header">
+          <h2 class="info-title"><span class="info-link" data-image="imginterregna">interregna</span></h2>
+          <h2 class="info-date"><i>5.23</i></h2>
+      </div>
+      <div class="info-description">
+          a <a href="https://tomorrowsoup.com/interregna" target="_blank">ritual</a> for climate grief, at <a href="https://www.e-flux.com/announcements/507829/technologies-of-critical-conscientization" target="_blank">con/crit/tec</a> residency. as <a href="https://tomorrowsoup.com/" target="_blank">tomorrow soup</a>.
+          <img id="imginterregna" class="info-image" src="https://d2w9rnfcy7mm78.cloudfront.net/38720238/original_fc3a90a101419a954f175d7a8bc56331.png?1754942808?bc=0" alt="moon party pic">
+          </div>
+    </div>
+    <div class="info-item info-last">
+      <div class="info-header">
+          <h2 class="info-title"><span class="info-link" data-image="imgsoil">in found soil, in order to bloom</span></h2>
+          <h2 class="info-date"><i>3.23</i></h2>
+      </div>
+      <div class="info-description">
+          a ritual honoring soil. as <a href="https://tomorrowsoup.com/" target="_blank">tomorrow soup</a>.
+          <img id="imgsoil" class="info-image" src="https://d2w9rnfcy7mm78.cloudfront.net/38720236/original_4e472ed3e9c44cf1ecdd171ad22a9c68.png?1754942807?bc=0" alt="moon party pic">
+          </div>
+    </div>
   </div>
 
   <script src="js/vendor/jquery-3.6.0.min.js"></script>
