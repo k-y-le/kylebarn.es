@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>snail mail zine club</title>
+    <style>
+        @font-face {
+            font-family: 'Meta-Old-French';
+            src: url('font/meta-old-french.woff2') format('woff2'),
+                 url('font/meta-old-french.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Meta-Old-French', 'Courier New', monospace;
+            background-color: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.8s ease;
+            cursor: pointer;
+            overflow-x: hidden;
+        }
+
+        #snail-icon {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        #content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            width: 100%;
+            padding: 40px 80px;
+        }
+
+        @media (max-width: 768px) {
+            #content {
+                padding: 20px;
+            }
+        }
+
+        .part-0 {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            min-height: 80vh;
+            text-align: center;
+        }
+
+        .part-0 .word {
+            font-size: 6rem;
+            font-weight: bold;
+            opacity: 0;
+        }
+
+        @media (max-width: 768px) {
+            .part-0 .word {
+                font-size: 3.5rem;
+            }
+        }
+
+        .part-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .part-text p {
+            margin-bottom: 1.5em;
+        }
+
+        .part-text a {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        .part-text a:hover {
+            opacity: 0.7;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <img id="snail-icon" src="img/snail.png" alt="Snail">
+
+    <div id="content"></div>
+
+    <script>
+        const parts = [
+            {
+                type: 'words',
+                content: ['SNAIL', 'MAIL', 'ZINE', 'CLUB']
+            },
+            {
+                type: 'text',
+                content: 'a 2026 zine club. each month, receive a zine from one member. one month, send out a zine to 11 other members. end your year with 12 handmade zines.'
+            },
+            {
+                type: 'text',
+                content: `how it works:
+
+on the first day of each month, one person starts to create 12 copies of a simple handmade zine
+
+on the 15th of the month, that person mails out 11 zines to each other member of the zine club
+
+by the end of the month, each member of the zine club receives a zine
+
+repeat, until the end of 2026! end the year with a collection of 12 homemade zines <3
+
+kyle will automate email reminders each month with mailing info!`
+            },
+            {
+                type: 'text',
+                content: `your commitment in joining:
+
+dedicating time to making a zine one month of 2026
+
+sharing your mailing address with 11 others
+
+paying for postage to send said zine (est. $10 total, but might be more/less depending on the bulk of the zine you make!)
+
+notifying kyle if you have a change of address or heart about being part of the club`
+            },
+            {
+                type: 'text',
+                content: `this is an experiment in:
+
+what kinds of conversations emerge via snail mail, in an increasingly connected world?
+
+how might we inspire each other across distance?
+
+what similar themes emerge across the duration of year, even among people who don't know one another?
+
+isn't it nice to make something with your hands, for others?
+
+what would it mean to tell time via physical artifacts and gifts from others?`
+            },
+            {
+                type: 'text',
+                content: `maybe you are asking: what's a zine? how do i make one? what kind of zine should i make for this club?
+
+a zine can be almost anything! one of the most common forms to make a simple zine is an 8-page foldable zine, which just requires one piece of paper! you can design something and print it out, draw it yourself (just remember you'll want to make 12 copies!) and make copies, or get creative! zines can take the form of stapled together leaves, embroidered pieces of fabric, scrolls written in fantasy script, anything you can imagine! <a href="https://thecreativeindependent.com/guides/how-to-make-a-zine/" target="_blank">this guide</a> is pretty good.`
+            },
+            {
+                type: 'text',
+                content: `interested? email kyletuhr (at) gmail (dot) com to "apply" (this is not meant to be competitive, just designate earnest interest), including answers to these questions!
+
+what's your name?
+
+what's drawing you to this zine club? have any particular intentions or goals?
+
+do you have a creative practice? what's it like?
+
+do you commit to full participation in the zine club?
+
+do you have preferences for which month you would like to make your zine? (otherwise, i will distribute randomly)
+
+any other thoughts/considerations?`
+            }
+        ];
+
+        let currentPart = 0;
+
+        function typeWriter(element, text, speed = 35) {
+            let i = 0;
+            element.innerHTML = '';
+
+            // Check if text contains HTML tags
+            const hasHTML = /<[^>]+>/.test(text);
+
+            if (hasHTML) {
+                // For HTML content, we need to preserve the tags
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = text;
+                const nodes = Array.from(tempDiv.childNodes);
+
+                return new Promise(async (resolve) => {
+                    for (let node of nodes) {
+                        if (node.nodeType === Node.TEXT_NODE) {
+                            // Type out text nodes character by character
+                            const nodeText = node.textContent;
+                            for (let j = 0; j < nodeText.length; j++) {
+                                element.innerHTML += nodeText.charAt(j);
+                                await new Promise(r => setTimeout(r, speed));
+                            }
+                        } else if (node.nodeType === Node.ELEMENT_NODE) {
+                            // For element nodes (like <a>), type out the content
+                            const tag = node.tagName.toLowerCase();
+                            const attrs = Array.from(node.attributes)
+                                .map(attr => `${attr.name}="${attr.value}"`)
+                                .join(' ');
+
+                            element.innerHTML += `<${tag}${attrs ? ' ' + attrs : ''}>`;
+                            const linkText = node.textContent;
+                            const linkElement = element.lastChild;
+
+                            for (let j = 0; j < linkText.length; j++) {
+                                linkElement.textContent += linkText.charAt(j);
+                                await new Promise(r => setTimeout(r, speed));
+                            }
+                            element.innerHTML += `</${tag}>`;
+                        }
+                    }
+                    resolve();
+                });
+            } else {
+                // Original behavior for plain text
+                return new Promise((resolve) => {
+                    function type() {
+                        if (i < text.length) {
+                            element.textContent += text.charAt(i);
+                            i++;
+                            setTimeout(type, speed);
+                        } else {
+                            resolve();
+                        }
+                    }
+                    type();
+                });
+            }
+        }
+
+        async function displayPart(partIndex) {
+            const content = document.getElementById('content');
+            content.innerHTML = '';
+
+            const part = parts[partIndex];
+
+            if (part.type === 'words') {
+                // Part 0: Large words vertically spaced
+                const container = document.createElement('div');
+                container.className = 'part-0';
+
+                for (let word of part.content) {
+                    const wordDiv = document.createElement('div');
+                    wordDiv.className = 'word';
+                    container.appendChild(wordDiv);
+                }
+
+                content.appendChild(container);
+
+                // Animate words appearing with typewriter effect
+                const wordDivs = container.querySelectorAll('.word');
+                const totalDuration = 2000; // 2 seconds total for part 0
+                const totalChars = part.content.reduce((acc, w) => acc + w.length, 0);
+                const speed = totalDuration / totalChars;
+
+                for (let i = 0; i < part.content.length; i++) {
+                    wordDivs[i].style.opacity = '1';
+                    await typeWriter(wordDivs[i], part.content[i], speed);
+                }
+            } else {
+                // Parts 1-6: Regular text with paragraphs
+                const container = document.createElement('div');
+                container.className = 'part-text';
+
+                // Split by double newlines to create paragraphs
+                const paragraphs = part.content.split('\n\n');
+
+                for (let para of paragraphs) {
+                    const p = document.createElement('p');
+                    container.appendChild(p);
+                }
+
+                content.appendChild(container);
+
+                // Typewriter effect for all text
+                const pElements = container.querySelectorAll('p');
+
+                for (let i = 0; i < paragraphs.length; i++) {
+                    await typeWriter(pElements[i], paragraphs[i], 20);
+                }
+            }
+        }
+
+        function interpolateColor(step) {
+            // Interpolate from black (#000000) to orange (#FB8923)
+            // step goes from 0 to 6 (7 parts total, including part 0)
+            const ratio = step / 6;
+
+            const startR = 0, startG = 0, startB = 0;
+            const endR = 251, endG = 137, endB = 35;
+
+            const r = Math.round(startR + (endR - startR) * ratio);
+            const g = Math.round(startG + (endG - startG) * ratio);
+            const b = Math.round(startB + (endB - startB) * ratio);
+
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        function nextPart() {
+            // Loop back to part 0 after part 6
+            currentPart = (currentPart + 1) % parts.length;
+
+            // Gradually change background color
+            document.body.style.backgroundColor = interpolateColor(currentPart);
+
+            displayPart(currentPart);
+        }
+
+        // Initialize with first part
+        displayPart(0);
+
+        // Click/touch to advance
+        document.body.addEventListener('click', nextPart);
+        document.body.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            nextPart();
+        });
+    </script>
+</body>
+</html>
