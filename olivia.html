@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>olivia and kyle scrapbook</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kotta+One&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Kotta One', serif;
+            background-color: #F5F3E8;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        #star-container {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 160px);
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .number {
+            position: absolute;
+            color: #1B4168;
+            font-size: 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+            user-select: none;
+            transform: translate(-50%, -50%);
+        }
+
+        .number:hover {
+            color: #2A6BA8;
+            transform: translate(-50%, -50%) scale(1.3);
+            font-weight: bold;
+        }
+
+        #top-title {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #1B4168;
+            font-size: 28px;
+            cursor: pointer;
+            z-index: 200;
+            transition: color 0.3s ease;
+            user-select: none;
+            text-decoration: underline;
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        #top-title:hover {
+            color: #2A6BA8;
+        }
+
+        #bottom-caption {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #1B4168;
+            font-size: 20px;
+            z-index: 200;
+            user-select: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        #bottom-caption.visible {
+            opacity: 1;
+        }
+
+        #text-overlay {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            height: calc(100vh - 160px);
+            overflow-y: auto;
+            overflow-x: hidden;
+            color: #D2691E;
+            font-size: 18px;
+            line-height: 1.6;
+            padding: 40px;
+            z-index: 50;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            scrollbar-width: none;
+        }
+
+        #text-overlay::-webkit-scrollbar {
+            display: none;
+        }
+
+        #text-overlay.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #image-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 500px;
+            max-height: 500px;
+            z-index: 50;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        #image-overlay.visible {
+            opacity: 1;
+        }
+
+        #image-overlay img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .number {
+                font-size: 22px;
+            }
+
+            #top-title {
+                font-size: 20px;
+            }
+
+            #bottom-caption {
+                font-size: 16px;
+            }
+
+            #text-overlay {
+                padding: 20px;
+                font-size: 16px;
+            }
+
+            #image-overlay {
+                max-width: 90%;
+                max-height: 60vh;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div id="top-title">olivia and kyle scrapbook</div>
+
+    <div id="star-container"></div>
+
+    <div id="text-overlay">dear olivia,<br><br>how to begin? i am thinking back to the first time we met, at a pillow fort party in san francisco (which you don't remember, but i swear this is true… friday august 26, 2022 i have a picture to prove it). there is always this moment, when meeting someone new, of glimpsing the possibility of your relationship. each interaction foretells untold entanglements to come. of course, most introductions don't lead to any of those places, and sometimes the glimpses are less than savory. a lot of people have bad vibes.<br><br>what futures did we glimpse on that evening in sf? if i were to write a story of our relationship, maybe i would make a grand claim here. a sense of immediate kinship, an instant shared dream destined to become reality. but i don't think i can make such a claim, only that i held in that moment a hope that we might hang out once or twice in nyc. that we could maybe, possibly, be a little bit of friends. as of writing this, that was 1,237 days ago. nearly 30,000 hours. that moment set off a spiral that is still unfolding. and, now, taking a new path. the road ahead of us is a bit less clear than it was before. but i know these past 1,237 days have set us up for a lifetime of being in connection.<br><br>do you remember when we laid in my bed — maybe it was our first time doing so — and talked about our biggest motivations in life? perhaps you could call them values. i remember putting it in my notes app. here it is:<br><br>KYLE MOTIVATED BY<br><br>people/collective<br><br>beauty<br><br>worldbuilding<br><br>OLIVIA MOTIVATED BY<br><br>play<br><br>connection<br><br>delight/joy<br><br>to me, a characteristic of love is when you keep making grand plans with one another, because the prospect of a shared future world is just too tantalizing. even when you know you probably won't accomplish all of it, or maybe it will never get off the ground, it is a signal of the earnest possibilities of being in relationship that we allow ourselves to dream in this way. one of the many things i admire about you, olivia, is your capacity for dreaming. the way you weave together play, connection, and joy into a future. i have learned so much from this aspect of your presence.<br><br>how have i grown through our relationship? in countless ways. i have learned new ways to ask questions of myself, and of the world. new ways to move, to play, to facilitate. our time together has lent so much truth to the statement that "to love is to be changed." ultimately, love is a practice of worldbuilding; we create a world between us. i am so incredibly grateful to have built a world with you.<br><br>our world has felt rich and joyous and a space with latitude to move between play and introspection and critique and so much more. it has been a place for me to move fluidly and rest when i feel alienated by the structures of society pressing down around me. i glimpse our world when we are coworking at stonefruit or phil or acre or public records or everywhere else we've been — you getting your coffee in your takeaway cup. i see it in the moments when we are crafting a class and dreaming about what kinds of questions we want to explore. in the moments of critiquing and exploring the world, together. i've always found it extremely rare to find a person with whom i can feel my own constraints loosening, and the diversity of experience we have shared together is a testament to how safe and curious i have felt with you.<br><br>so i wanted to share some of the joyous moments of our past year together, and beyond. it's like a scrapbook of the world we have built together. a vibrant testament to our love.<br><br>i will miss you and our companionship — the sense that together so much more is possible. my confidence, creativity, and ease are all augmented by your presence. i will carry it with me even when we are physically distant, because you have taught me so much about ways to be and live.<br><br>all i do is in pursuit of living well, staying with the trouble, being deeply *in it.* i want to look back at all the different seasons of my life with the confidence that i have truly lived, have not let fear keep me from finding my path. our relationship has been crucial to this sense of living for me, especially in the whirlwind of new york city. for this i am infinitely grateful.<br><br>and i'm excited for what is to come, even through the grief of rupture. because i know that the future holds moments of joyous connection to the landscapes of your childhood, the tender slowness of california, the flourishing of your shared world with max.<br><br>i am always, always rooting for you. and already anticipating the joyous reunions we have to look forward to it.<br><br>may this scrapbook of our love be a constant reference to the world we have crafted together. may it remind you of moments of play and connection when you feel uncertain or uneasy about the world around you. and may it, most of all, remind you that i love you, olivia.<br><br>kyle ♥</div>
+
+    <div id="image-overlay">
+        <img src="" alt="Memory">
+    </div>
+
+    <div id="bottom-caption"></div>
+
+    <script>
+        // Data structure for each number - you can fill this in with your own images and captions
+        const numberData = {
+            1: { image: 'oliviaimg/beginning.jpg', caption: 'our first meeting... pillow fort party in sf' },
+            2: { image: 'oliviaimg/acorns.jpg', caption: 'giving me finger hats with acorn pieces while it rains' },
+            3: { image: 'oliviaimg/makeup.JPG', caption: 'wearing crazy makeup for melodys party just because' },
+            4: { image: 'oliviaimg/coven.JPG', caption: 'cackling in the park like the witches we are even while sick/injured' },
+            5: { image: 'oliviaimg/pond.jpg', caption: 'swimming in the beautiful pond at willas house upstate' },
+            6: { image: 'oliviaimg/bald.jpg', caption: 'being BALD for geoff gayzos coronation' },
+            7: { image: 'oliviaimg/shakeitoff.jpg', caption: '...shake it off... shake it off...' },
+            8: { image: 'oliviaimg/flyers.jpg', caption: 'putting up flyers for our silly little classes!' },
+            9: { image: 'oliviaimg/scavenge.jpg', caption: 'scavenger hunting! team creatures third place!' },
+            10: { image: 'oliviaimg/cake.jpg', caption: 'making an extra cake in addition to the one for joshuas birthday just for us' },
+            11: { image: 'oliviaimg/paxti.jpg', caption: 'getting all dressed up for paxtis birthday and then having the time of our lives in the pillow fort' },
+            12: { image: 'oliviaimg/kylefit.jpg', caption: 'dressing up as each other when we meet up to work in greenpoint' },
+            13: { image: 'oliviaimg/chimeras.jpg', caption: 'chimeras photoshoot! launching this beautiful project into the world' },
+            14: { image: 'oliviaimg/pratt.jpg', caption: 'teaching our first big kids workshop at pratt! learning a lot' },
+            15: { image: 'oliviaimg/bury.jpg', caption: 'being "buried" by our students on the last day of becoming creature' },
+            16: { image: 'oliviaimg/students.jpg', caption: 'becoming creature! teaching all of our amazing students and becoming friends w them' },
+            17: { image: 'oliviaimg/picnic.jpg', caption: 'picnicking... the origins of chimeras!' },
+            18: { image: 'oliviaimg/ferment.jpg', caption: 'making kimchi and other fermented goodies' },
+            19: { image: 'oliviaimg/dance.jpg', caption: 'spontaneous hangs and silly moments' },
+            20: { image: 'oliviaimg/beetles1.JPG', caption: 'setting up for beetles! what a big leap into the unknown and such a fun collaboration' },
+            21: { image: 'oliviaimg/cookie.jpg', caption: 'cookie decorating party when we were nyc babies' },
+            22: { image: 'oliviaimg/granola.jpg', caption: 'making granola and getting super into meal prepping... sorta...' },
+            23: { image: 'oliviaimg/zoo.jpg', caption: 'going to the zoo right after quitting jobs' },
+            24: { image: 'oliviaimg/creatures.jpg', caption: 'getting a bunch of people to run around acting like pigeons/rats/cockroaches' },
+            25: { image: 'oliviaimg/idk.jpg', caption: 'idk what this one is even from... but seems like sweaty summer biking around ft greene' },
+            26: { image: 'oliviaimg/tacos.jpg', caption: 'dancing dancing dancing... and tacos after' },
+            27: { image: 'oliviaimg/facecake.jpg', caption: 'face cake era' },
+            28: { image: 'oliviaimg/stormking.jpg', caption: 'dancing with the sculptures at storm king' },
+            29: { image: 'oliviaimg/pioneer.jpg', caption: 'going to random events around the city together and sometimes being inspired (sometimes not)' },
+            30: { image: 'oliviaimg/pie.jpg', caption: 'pie!' },
+            31: { image: 'oliviaimg/hang.jpg', caption: 'hanging out sooo much. just hanging idk what we ever doing other than. hang.' },
+            32: { image: 'oliviaimg/mistersunday.jpg', caption: 'biking to mister sunday in 23... our first time dancing together. random guy afterwards came up to us and was like "yall were the most fun people here today"' },
+            33: { image: 'oliviaimg/nocturnal.png', caption: 'catharsis at the nocturnal medicine ritual' },
+            34: { image: 'oliviaimg/museum.jpg', caption: 'taking the chimeras to the museum' },
+            35: { image: 'oliviaimg/lay.jpg', caption: 'so many park lays' },
+            36: { image: 'oliviaimg/wordhunt.jpeg', caption: 'the word hunt days...' },
+            37: { image: 'oliviaimg/shroomies.jpg', caption: 'amazing shrooms trip in prospect park' },
+            38: { image: 'oliviaimg/retreat.JPG', caption: 'organizing chimeras retreat to vermont!' },
+            39: { image: 'oliviaimg/gaytroll.jpg', caption: 'going to the bar one (1) time only to do personality quizzes and lookup "strong short famous gay troll" for some reason on the way home' },
+            40: { image: 'oliviaimg/napping.jpg', caption: 'many naps on your couch' },
+            41: { image: 'oliviaimg/cyborgs.jpg', caption: 'teaching becoming cyborg and it feeling like a friend group basically' },
+            42: { image: 'oliviaimg/willa.jpg', caption: 'arriving sickly and being replenished by the lush upstate vibes' },
+            43: { image: 'oliviaimg/facilitator.jpg', caption: 'exploring facilitation of all kinds' },
+            44: { image: 'oliviaimg/basement.jpg', caption: 'that time we went to basement and we danced so so so hard all night long' },
+            45: { image: 'oliviaimg/sprinkles.png', caption: 'trying all sorts of different snacks after my birthday dancing' },
+            46: { image: 'oliviaimg/covenprep.png', caption: 'prepping for coven party. yet more memories in nellies lawn' },
+            47: { image: 'oliviaimg/tree.jpg', caption: 'fitting sooo many people in this tree during persimmon monthly molting' },
+            48: { image: 'oliviaimg/thanksgiving.jpg', caption: 'thanksgiving after all the eastern europeans went home' },
+            49: { image: 'oliviaimg/paya.jpg', caption: 'making random paya short film with devlin on the hottest day of the year' },
+            50: { image: 'oliviaimg/rats.jpg', caption: 'getting a bunch of people to actually think about rats' }
+        };
+
+        // Seeded random function for consistent but random-looking layout
+        function seededRandom(seed) {
+            const x = Math.sin(seed) * 10000;
+            return x - Math.floor(x);
+        }
+
+        // Create star pattern of numbers
+        function createStar() {
+            const container = document.getElementById('star-container');
+            const centerX = window.innerWidth / 2;
+            const centerY = (window.innerHeight - 160) / 2 + 80;
+
+            // Scale down for mobile devices to ensure padding on sides
+            const isMobile = window.innerWidth <= 768;
+            const scale = isMobile ? 0.45 : 1;
+
+            // Define rings with number of points in each ring
+            const rings = [
+                { start: 1, count: 1, radius: 0 },              // Center
+                { start: 2, count: 6, radius: 80 * scale },     // Ring 1
+                { start: 8, count: 9, radius: 160 * scale },    // Ring 2
+                { start: 17, count: 12, radius: 240 * scale },  // Ring 3
+                { start: 29, count: 12, radius: 320 * scale },  // Ring 4
+                { start: 41, count: 10, radius: 400 * scale }   // Ring 5
+            ];
+
+            let numberIndex = 1;
+
+            rings.forEach((ring, ringIdx) => {
+                for (let i = 0; i < ring.count && numberIndex <= 50; i++) {
+                    const numberDiv = document.createElement('div');
+                    numberDiv.className = 'number';
+                    numberDiv.textContent = numberIndex;
+                    numberDiv.dataset.number = numberIndex;
+
+                    if (ring.radius === 0) {
+                        // Center number
+                        numberDiv.style.left = `${centerX}px`;
+                        numberDiv.style.top = `${centerY}px`;
+                    } else {
+                        // Calculate angle for this point in the ring
+                        const baseAngle = (i / ring.count) * Math.PI * 2;
+
+                        // Add randomness to angle and radius
+                        const angleVariation = (seededRandom(numberIndex * 7.3) - 0.5) * 0.4;
+                        const radiusVariation = (seededRandom(numberIndex * 11.2) - 0.5) * 40 * scale;
+
+                        const angle = baseAngle + angleVariation;
+                        const radius = ring.radius + radiusVariation;
+
+                        const x = centerX + radius * Math.cos(angle);
+                        const y = centerY + radius * Math.sin(angle);
+
+                        numberDiv.style.left = `${x}px`;
+                        numberDiv.style.top = `${y}px`;
+                    }
+
+                    const currentNumber = numberIndex;
+                    numberDiv.addEventListener('click', () => showImage(currentNumber));
+                    container.appendChild(numberDiv);
+                    numberIndex++;
+                }
+            });
+        }
+
+        // Handle title click to show/hide text overlay
+        const topTitle = document.getElementById('top-title');
+        const bottomCaption = document.getElementById('bottom-caption');
+        const textOverlay = document.getElementById('text-overlay');
+        const imageOverlay = document.getElementById('image-overlay');
+
+        let textVisible = false;
+
+        topTitle.addEventListener('click', () => {
+            textVisible = !textVisible;
+            if (textVisible) {
+                textOverlay.classList.add('visible');
+                imageOverlay.classList.remove('visible');
+            } else {
+                textOverlay.classList.remove('visible');
+            }
+        });
+
+        // Handle number click to show image
+        function showImage(number) {
+            const data = numberData[number];
+            const img = imageOverlay.querySelector('img');
+
+            img.src = data.image;
+            imageOverlay.classList.add('visible');
+            textOverlay.classList.remove('visible');
+            textVisible = false;
+
+            bottomCaption.textContent = data.caption;
+            bottomCaption.classList.add('visible');
+        }
+
+        // Close image when clicking on it
+        imageOverlay.addEventListener('click', () => {
+            imageOverlay.classList.remove('visible');
+            bottomCaption.classList.remove('visible');
+        });
+
+        // Initialize star on page load
+        createStar();
+
+        // Recreate star on window resize
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                document.getElementById('star-container').innerHTML = '';
+                createStar();
+            }, 250);
+        });
+    </script>
+</body>
+</html>
