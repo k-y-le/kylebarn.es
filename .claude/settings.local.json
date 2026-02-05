@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.baserow.io)",
+      "WebFetch(domain:docs.baserow.io)"
+    ]
+  }
+}

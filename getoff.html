@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="get off events">
+  <meta name="author" content="kyle barnes">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+
+  <title>get off</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Mono">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Space Mono', monospace;
+      color: #1d3557;
+      background-color: #fefae0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #container {
+      text-align: center;
+      max-width: 480px;
+      padding: 2em;
+    }
+
+    #intro-text {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin: 0 0 2.5em 0;
+    }
+
+    #email-input {
+      border-radius: 30px;
+      background-color: #fefae0;
+      border: 2px solid #1d3557;
+      height: 2.5em;
+      padding: 0 1em;
+      font-size: 1rem;
+      font-family: 'Space Mono', monospace;
+      color: #1d3557;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 1em;
+    }
+
+    #email-input::placeholder {
+      color: #8B8B8B;
+    }
+
+    #email-input:focus {
+      outline: none;
+      border-color: #174c96;
+    }
+
+    #signup-btn {
+      border-radius: 30px;
+      background-color: #1d3557;
+      border: none;
+      color: #fefae0;
+      height: 2.5em;
+      padding: 0 2em;
+      font-size: 1rem;
+      font-family: 'Space Mono', monospace;
+      cursor: pointer;
+    }
+
+    #signup-btn:hover {
+      background-color: #174c96;
+    }
+
+    #confirmation {
+      display: none;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    #error-text {
+      display: none;
+      margin-top: 1em;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <p id="intro-text">let's get off together.<br>next event february 20 at telos.haus</p>
+    <div id="signup-section">
+      <input type="email" id="email-input" placeholder="your email">
+      <br>
+      <button id="signup-btn">add me to the list</button>
+      <p id="error-text">something went wrong — try again</p>
+    </div>
+    <p id="confirmation">you're on the list :)</p>
+  </div>
+
+  <script>
+    const BASEROW_TOKEN    = '7cviDTDyHu1hYBtdB3Bt6FYNyl0lGVOG';
+    const BASEROW_TABLE_ID = '828266';
+
+    document.getElementById('signup-btn').addEventListener('click', async function () {
+      const emailInput = document.getElementById('email-input');
+      const email = emailInput.value.trim();
+
+      if (!email || !emailInput.checkValidity()) {
+        emailInput.reportValidity();
+        return;
+      }
+
+      try {
+        const res = await fetch(
+          `https://api.baserow.io/api/database/rows/table/${BASEROW_TABLE_ID}/?user_field_names=true`,
+          {
+            method: 'POST',
+            headers: {
+              'Authorization': `Token ${BASEROW_TOKEN}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ Email: email }),
+          }
+        );
+
+        if (res.ok) {
+          document.getElementById('signup-section').style.display = 'none';
+          document.getElementById('confirmation').style.display = 'block';
+        } else {
+          document.getElementById('error-text').style.display = 'block';
+        }
+      } catch (e) {
+        document.getElementById('error-text').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
