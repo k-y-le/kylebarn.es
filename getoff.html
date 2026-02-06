@@ -28,14 +28,51 @@
 
     #container {
       text-align: center;
-      max-width: 480px;
+      max-width: 600px;
       padding: 2em;
+    }
+
+    #header-image {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      margin: 0 auto 1.5em auto;
+      display: block;
     }
 
     #intro-text {
       font-size: 1.3rem;
       line-height: 1.6;
       margin: 0 0 2.5em 0;
+    }
+
+    #event-info {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    #event-info:hover {
+      color: #174c96;
+    }
+
+    #about-section {
+      display: none;
+      text-align: left;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-top: 2em;
+      padding-top: 2em;
+      border-top: 2px solid #1d3557;
+    }
+
+    #about-section h3 {
+      margin: 1.5em 0 0.5em 0;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    #about-section p {
+      margin: 0.8em 0;
     }
 
     #email-input {
@@ -93,7 +130,11 @@
 </head>
 <body>
   <div id="container">
-    <p id="intro-text">let's get off together.<br>next event february 20 at telos.haus</p>
+    <img id="header-image" src="img/getoff.png" alt="get off">
+    <p id="intro-text">
+      let's get off together.<br>
+      <span id="event-info">next event february 20 at telos.haus</span>
+    </p>
     <div id="signup-section">
       <input type="email" id="email-input" placeholder="your email">
       <br>
@@ -101,11 +142,51 @@
       <p id="error-text">something went wrong — try again</p>
     </div>
     <p id="confirmation">you're on the list :)</p>
+
+    <div id="about-section">
+      <p><strong>LET'S GET OFF TOGETHER</strong> is a celebration of social life as it's meant to be: free from the grip of greedy tech platforms. That means more than just saying "please don't use your phone on the dance floor" (although there will most certainly not be any phones on this dance floor)—</p>
+
+      <p>We're talking presence, real attention to one another, to music, to community. Organized by artists, activists, and friends from the NYC offline community, this gathering weaves together immersive art, facilitated experiences, ritual, DJ sets—and space will be made for anyone ready to delete a dating app, get off social media (together), or plot the overthrow of the tech oligopoly.</p>
+
+      <p>Come co-create this sanctuary away from the smartphone-based life and towards gatherings that are in person, participatory, and full of agency. And maybe harness the energy of Valentine's Day to find an offline love? (note: this is not a sexy party lol)</p>
+
+      <p><strong>FREE PARTY!</strong> Drinks will be sold, and we'll have a $10–15 suggested donation at the door :)</p>
+
+      <h3>FAQ–</h3>
+
+      <p><strong>Isn't "offline" night life just putting stickers on phones?</strong></p>
+      <p>That's a good first step, but we want to see a nightlife divested from tech platforms. It's not simply about getting off your phone for a few hours. It's about intentionally behaving in ways that our phones don't really let us— reconnecting to thoughts, ideas, actions that tech companies have pushed out. Passive consumption has become the default, we're creating spaces to exercise active participation, embodiment, attention, and all the good vibes that don't need to come through instagram (we promise!).</p>
+
+      <p><strong>Is this a sexy party?</strong></p>
+      <p>No, this is a group of artists, activists, and friends from the NYC offline community—all are welcome. But we think a life away from greedy tech platforms is pretty sexy, anyways.</p>
+
+      <p><strong>What kinds of activities/rituals?</strong></p>
+      <p>Come through to find out. Some serious, some silly, all designed to connect us.</p>
+
+      <p><strong>Can I post about this on instagram?</strong></p>
+      <p>Please don't…</p>
+
+      <p><strong>Where at?</strong></p>
+      <p>telos.haus is a community space, event venue, and source of great offline vibes in East Williamsburg.</p>
+
+      <p><strong>Who is doing this?</strong></p>
+      <p>We are a group of friends who have been organizing for offline culture for a while now, representing groups like the Strother School of Radical Attention, Luddite Club, Appstinence, Lamp Club, Month Offline, & more. But mostly, we're just interested in demonstrating that a better nightlife is possible.</p>
+    </div>
   </div>
 
   <script>
     const BASEROW_TOKEN    = '7cviDTDyHu1hYBtdB3Bt6FYNyl0lGVOG';
     const BASEROW_TABLE_ID = '828266';
+
+    // Toggle about section
+    document.getElementById('event-info').addEventListener('click', function () {
+      const aboutSection = document.getElementById('about-section');
+      if (aboutSection.style.display === 'none' || aboutSection.style.display === '') {
+        aboutSection.style.display = 'block';
+      } else {
+        aboutSection.style.display = 'none';
+      }
+    });
 
     document.getElementById('signup-btn').addEventListener('click', async function () {
       const emailInput = document.getElementById('email-input');
