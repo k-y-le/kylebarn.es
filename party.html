@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>A PARTY HAS...</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: #283618;
+  height: 100dvh;
+  overflow: hidden;
+  font-family: 'Times New Roman', Times, serif;
+  touch-action: none;
+}
+#stage { position: fixed; inset: 0; transition: opacity .25s; }
+#header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 10;
+  /* text-align: center; */
+  font-weight: bold;
+  padding: 22px 16px 18px;
+  font-size: clamp(28px, 7vw, 48px);
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  color: rgba(255,255,255,0.82);
+  pointer-events: none;
+  letter-spacing: 0.01em;
+}
+.slip {
+  position: absolute;
+  padding: 7px 10px 9px;
+  font-size: 12px;
+  line-height: 1.45;
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 1px 2px 5px rgba(0,0,0,0.12);
+  cursor: pointer;
+  will-change: transform;
+  -webkit-tap-highlight-color: transparent;
+}
+#overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(40,54,24,0.65);
+  z-index: 50;
+  touch-action: manipulation;
+}
+#overlay.on { display: flex; align-items: center; justify-content: center; }
+#card {
+  width: min(290px, 84vw);
+  padding: 22px 26px 28px;
+  font-size: 18px;
+  line-height: 1.55;
+  border: 1px solid rgba(0,0,0,0.12);
+  box-shadow: 3px 6px 20px rgba(0,0,0,0.2);
+  cursor: default;
+}
+</style>
+</head>
+<body>
+
+<div id="header">A PARTY HAS...</div>
+<div id="stage"></div>
+<div id="overlay">
+  <div id="card">
+    <span id="ct"></span>
+  </div>
+</div>
+
+<script>
+// ── swap in real responses here ──────────────────────────────────────────────
+const DATA = [
+  "labor",
+  "cleanup",
+  "trash",
+  "lulls",
+  "setup",
+  "a rhythm",
+  "transitions",
+  "bodily functions",
+  "pictures",
+  "drama",
+  "pressure",
+  "regrets",
+  "release",
+  "an arc",
+  "celebration",
+  "a space",
+  "consumables",
+  "3+ people",
+  "contingencies",
+  "an invitation",
+  "a theme",
+  "a host(s)",
+  "attitude",
+  "friends & strangers",
+  "laughter",
+  "an intention",
+  "expectations",
+  "music (maybe)",
+  "a spectrum of inhibitions",
+  "a start & an end",
+  "lighting",
+  "an archive",
+  "energy!",
+  "a mission/goal",
+  "activities",
+  "a wild card",
+  "rules",
+  "a title/name",
+  "bottlenecks",
+  "sensory experience",
+  "a purpose or excuse",
+  "fun",
+  "curation",
+  "permission",
+  "collectivism",
+  "decorations",
+  "freshness",
+  "a center & an edge",
+  "interaction/conversation",
+  "freedom from work",
+  "logistics",
+  "ceremony",
+  "play",
+  "an afterparty",
+  "exchange",
+  "an escape",
+  "a budget",
+  "gifts",
+  "tools",
+  "danger",
+  "participants (including nonhumans)",
+  "lots of conversation",
+  "a dress code",
+  "aperitifs and/or alcohol",
+  "movement",
+  "different depths of engagement",
+  "different levels of presence",
+  "bathrooms",
+  "something to take away",
+  "exclusion",
+  "sexual tension/desire"
+];
+// ────────────────────────────────────────────────────────────────────────────
+
+const COLORS = ['#fefae0', '#faedcd', '#d4a373', '#e9edc9', '#ccd5ae'];
+const N = 50;
+
+const stage   = document.getElementById('stage');
+const overlay = document.getElementById('overlay');
+const card    = document.getElementById('card');
+const ct      = document.getElementById('ct');
+
+function r(a, b) { return a + Math.random() * (b - a); }
+
+const pool = [...DATA].sort(() => Math.random() - .5);
+while (pool.length < N) pool.push(...DATA.sort(() => Math.random() - .5));
+
+const slips = Array.from({length: N}, (_, i) => {
+  const el    = document.createElement('div');
+  el.className = 'slip';
+  const color  = COLORS[i % COLORS.length];
+  el.style.background = color;
+  const w = r(108, 158) | 0;
+  el.style.width = w + 'px';
+  el.textContent = pool[i];
+  stage.appendChild(el);
+
+  const s = {
+    el, color, text: pool[i], w,
+    x: r(0, window.innerWidth - w),
+    y: r(-window.innerHeight * 1.3, 30),
+    vy: r(0.42, 1.05),
+    baseRot: r(-14, 14),
+    phase: r(0, Math.PI * 2),
+    dA: r(0.15, 0.55),
+    dF: r(0.002, 0.006),
+    t: r(0, 900),
+  };
+
+  el.addEventListener('pointerdown', e => {
+    e.stopPropagation();
+    ct.textContent = s.text;
+    card.style.background = s.color;
+    card.style.transform = `rotate(${r(-4, 4).toFixed(1)}deg)`;
+    overlay.classList.add('on');
+    stage.style.opacity = '0.28';
+  });
+
+  return s;
+});
+
+overlay.addEventListener('pointerdown', () => {
+  overlay.classList.remove('on');
+  stage.style.opacity = '1';
+});
+card.addEventListener('pointerdown', e => e.stopPropagation());
+
+let prev = 0;
+function tick(ts) {
+  const dt = prev ? Math.min(ts - prev, 50) : 16;
+  prev = ts;
+  const H = window.innerHeight, W = window.innerWidth;
+
+  for (const s of slips) {
+    s.t += dt;
+    s.y += s.vy * dt / 16;
+    s.x += Math.sin(s.t * s.dF + s.phase) * s.dA * dt / 16;
+    const rot = s.baseRot + Math.sin(s.t * s.dF * 0.4) * 2.5;
+
+    if (s.y > H + 70) {
+      s.y = -90;
+      s.x = r(0, W - s.w);
+      s.phase = r(0, Math.PI * 2);
+    }
+    if (s.x < -s.w - 10) s.x = W;
+    if (s.x > W + 10) s.x = -s.w;
+
+    s.el.style.left = s.x + 'px';
+    s.el.style.top  = s.y + 'px';
+    s.el.style.transform = `rotate(${rot.toFixed(1)}deg)`;
+  }
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
