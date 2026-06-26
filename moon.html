@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="moon bulletin - a biweekly nyc events newsletter">
+  <meta name="author" content="kyle barnes">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+
+  <title>moon bulletin</title>
+
+  <style>
+    @font-face {
+      font-family: 'Meta-Old-French';
+      src: url('font/meta-old-french.woff2') format('woff2'),
+           url('font/meta-old-french.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Meta-Old-French', Georgia, 'Times New Roman', Times, serif;
+      background-color: #cde8f5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 480px;
+      width: 100%;
+    }
+
+    .moon-img {
+      width: 220px;
+      height: 220px;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto 2rem;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: normal;
+      color: #1a1a2e;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.01em;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: #3a4a5c;
+      line-height: 1.6;
+      margin-bottom: 2.5rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    label {
+      font-size: 0.95rem;
+      color: #3a4a5c;
+      margin-bottom: 0.25rem;
+    }
+
+    input[type="email"] {
+      font-family: 'Meta-Old-French', Georgia, serif;
+      font-size: 1rem;
+      border: 1px solid #7ab3d0;
+      background: rgba(255, 255, 255, 0.6);
+      color: #1a1a2e;
+      padding: 0.6rem 1rem;
+      width: 100%;
+      max-width: 320px;
+      outline: none;
+    }
+
+    input[type="email"]:focus {
+      border-color: #3a7ca5;
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    input[type="submit"] {
+      font-family: 'Meta-Old-French', Georgia, serif;
+      font-size: 1rem;
+      background: none;
+      border: 1px solid #3a7ca5;
+      color: #1a1a2e;
+      padding: 0.6rem 2rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    input[type="submit"]:hover {
+      background: #3a7ca5;
+      color: white;
+    }
+
+    .buttondown-credit {
+      font-size: 0.75rem;
+      color: #7ab3d0;
+      margin-top: 0.5rem;
+    }
+
+    .buttondown-credit a {
+      color: #7ab3d0;
+      text-decoration: none;
+    }
+
+    .buttondown-credit a:hover {
+      color: #3a7ca5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="moon-img" id="moon-slide" src="img/moon/moon_01.png" alt="moon character">
+
+    <h1>moon bulletin</h1>
+    <p class="subtitle">a biweekly nyc events newsletter shared according to moon cycle<br>sent every first and third quarter moon</p>
+
+    <form
+      action="https://buttondown.com/api/emails/embed-subscribe/moon-bulletin"
+      method="post"
+      class="embeddable-buttondown-form"
+    >
+      <label for="bd-email">enter your email</label>
+      <input type="email" name="email" id="bd-email" placeholder="you@example.com" />
+      <input type="submit" value="subscribe" />
+      <!-- <p class="buttondown-credit">
+        <a href="https://buttondown.com/refer/moon-bulletin" target="_blank">powered by buttondown</a>
+      </p> -->
+    </form>
+  </div>
+
+  <script>
+    const imgs = Array.from({length: 13}, (_, i) => `img/moon/moon_${String(i + 1).padStart(2, '0')}.png`);
+    let idx = 0;
+    const el = document.getElementById('moon-slide');
+    setInterval(() => {
+      idx = (idx + 1) % imgs.length;
+      el.src = imgs[idx];
+    }, 800);
+  </script>
+</body>
+</html>
